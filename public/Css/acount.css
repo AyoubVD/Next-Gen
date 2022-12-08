@@ -36,3 +36,33 @@ body {
 	border-radius: 100%;
 	border: 5px solid #fff;
 }
+
+.btn-delete{
+	
+		color: #fff;
+		background-color: red;
+		border-color: red; }
+		.btn-delete:hover {
+			color: #fff;
+			background-color: red;
+			border-color: red; }
+		  .btn-delete:focus, .btn-delete.focus {
+			-webkit-box-shadow: 0 0 0 0.2rem rgba(255, 81, 38, 0.5);
+			box-shadow: 0 0 0 0.2rem rgba(255, 81, 38, 0.5); }
+		  .btn-delete.disabled, .btn-delete:disabled {
+			color: #fff;
+			background-color: red;
+			border-color: red; }
+		  .btn-delete:not(:disabled):not(.disabled):active, .btn-delete:not(:disabled):not(.disabled).active,
+		  .show > .btn-delete.dropdown-toggle {
+			color: #fff;
+			background-color: red;
+			border-color: red; }
+			.btn-delete:not(:disabled):not(.disabled):active:focus, .btn-delete:not(:disabled):not(.disabled).active:focus,
+			.show > .btn-delete.dropdown-toggle:focus {
+			  -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 81, 38, 0.5);
+			  box-shadow: 0 0 0 0.2rem rgba(255, 81, 38, 0.5); 
+}
+.account-deletion{
+	padding-top: 20px;
+}

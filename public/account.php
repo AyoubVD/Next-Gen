@@ -95,6 +95,7 @@
 						</div>
 						<div>
 							<button class="btn btn-primary">Update</button>
+							
 							<button class="btn btn-light">Cancel</button>
 						</div>
 					</div>
@@ -124,6 +125,7 @@
 						</div>
 						<div>
 							<button class="btn btn-primary">Update</button>
+							
 							<button class="btn btn-light">Cancel</button>
 						</div>
 					</div>
@@ -155,7 +157,17 @@
 						</div>
 						<div>
 							<button class="btn btn-primary">Update</button>
+							
 							<button class="btn btn-light">Cancel</button>
+						</div>
+						<div class="account-deletion">
+								
+								  	<label>Click here to permanently remove your account</label>
+								  	
+								
+						</div>
+						<div>
+						<button onclick="OpenDeletionDialogue()" class = "btn btn-delete">Delete</button>
 						</div>
 					</div>
 					<div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="application-tab">
@@ -223,5 +235,6 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="Scripts/PreDelete.js"></script>
 </body>
 </html>
