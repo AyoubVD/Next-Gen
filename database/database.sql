@@ -11,8 +11,8 @@ CREATE TABLE users(
     bannerpic VARCHAR(32) 
 );
 
-CREATE TABLE posts(
-    postid INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE feed(
+    feedid INT PRIMARY KEY AUTO_INCREMENT,
     userid int,
     msg VARCHAR(255) ,
     pic VARCHAR(32),
@@ -24,14 +24,14 @@ CREATE TABLE posts(
 
 CREATE TABLE comments(
     commentid INT PRIMARY KEY AUTO_INCREMENT,
-    postid int,
+    feedid int,
     userid int,
     comment VARCHAR(255) ,
     likes int,
     /*--dislikes int,*/
-    FOREIGN KEY (postid) REFERENCES posts(postid)
+    FOREIGN KEY (feedid) REFERENCES feed(feedid)
 );
 
 
 
-CREATE VIEW v_user_post AS SELECT p.*, u.username FROM posts as p JOIN users as u WHERE u.id = p.userid;
+CREATE VIEW v_user_post AS SELECT p.*, u.username FROM feed as p JOIN users as u WHERE u.id = p.userid;
