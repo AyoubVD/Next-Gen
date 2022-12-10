@@ -8,7 +8,8 @@ CREATE TABLE users(
     mail VARCHAR(255) UNIQUE,
     username VARCHAR(255) UNIQUE,
     profilepic VARCHAR(32),
-    bannerpic VARCHAR(32) 
+    bannerpic VARCHAR(32),
+    isAdmin BOOL
 );
 
 CREATE TABLE feed(

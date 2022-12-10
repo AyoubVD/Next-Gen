@@ -38,7 +38,7 @@ if($_POST){
 				<div class="col-md-7 col-lg-5">
 					<div class="login-wrap">
 		      	<h3 class="text-center mb-4">Create Your Account</h3>
-						<form action="register.php" class="signup-form" method="post" id="demo-form">
+						<form action="./signup.php" class="signup-form" method="post" id="demo-form">
 		      		<div class="form-group mb-3">
 		      			<label class="label" for="username">Username</label>
 		      			<input type="text" class="form-control" placeholder="Friendly Neighborhood Spider-Man" name="username" id="username" required>
@@ -74,7 +74,7 @@ if($_POST){
 	            	<button type="submit" class="form-control btn btn-primary submit px-3">Sign Up</button>
 	            </div>
 	          </form>
-	          <p>I'm already a member! <a href="../index.php">Sign In</a></p>
+	          <p>I'm already a member! <a href="./index.php">Sign In</a></p>
 	        </div>
 				</div>
 			</div>

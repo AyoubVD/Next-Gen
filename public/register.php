@@ -8,7 +8,7 @@ if($_POST){
     $password2=$_POST["password2"];
     //$agree=$_POST["agree"];
     if(register($username,$password,$password2,$email)){
-        header('Location: ../index.php');
+        header('Location: ./index.php');
     }
 }
 ?>
@@ -40,7 +40,7 @@ if($_POST){
 <body>
     <?php
 include("./navbar.html");
-header('Location: ../index.php');
+header('Location: ./index.php');
 ?>
 <main>
     

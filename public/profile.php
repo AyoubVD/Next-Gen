@@ -70,6 +70,7 @@ $user=getUser($_SESSION["id"]);
 										<span class="cssui-stats__name cssui-usercard__stats-name">Phone</span>
 										<a href="tel:79000000000" class="cssui-stats__value">7-900-000-00-00</a>
 									</div>
+									
 								</div>
 							</div>
 						</div>
