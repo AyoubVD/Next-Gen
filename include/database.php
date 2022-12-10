@@ -5,4 +5,5 @@ if(!$db){
     die("there was an issue connecting to the database!");
 }
 
-define('database', $db);
+// define('database', $db);
+$GLOBALS["database"] = $db;
