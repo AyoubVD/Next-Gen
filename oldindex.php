@@ -29,7 +29,7 @@
 		<div class="right">
 		<h5>Login</h5>
 		<p>Don't have an account? <a href="./public/signup.php">Create Your Account</a> it takes less than a minute</p>
-        <form name="f1" action="./public/FeedPlaceHolder.php" method="POST">
+		<form name="f1" method="POST" action="index.php" >  
 		<div class="inputs">
 			<input type="text" placeholder="user name" id ="username" name  = "username" required>
 			<br>
