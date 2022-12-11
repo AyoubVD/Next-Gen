@@ -31,7 +31,7 @@ $posts=GetFeed(); // [["userName" => "Test", "msg" => "Test", "likes" => 0, "pos
         foreach ($posts as &$p) {
         ?>
         <div class="feed-item">
-            <img src="./img/<?php echo $p["pic"] ?>" />
+            <img src="./uploads/<?php echo $p["pic"] ?>" />
             <div>
                 <div>
                     <p><b><?php echo $p["username"] ?></b>: <?php echo $p["msg"] ?></p>

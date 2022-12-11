@@ -1,3 +1,12 @@
+<?php
+include_once '../include/post.php';
+
+// Call function
+if (isset($_POST['description'])) {
+    post();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +18,7 @@
 </head>
 
 <body>
-    <form action="post.php" method = "post">
+    <form action="<?php echo $_SERVER["PHP_SELF"]?>" method = "post" enctype="multipart/form-data">
         Description : <br />
         <textarea rows="5" cols="50" name="description">
         </textarea>
