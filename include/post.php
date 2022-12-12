@@ -44,8 +44,29 @@ function dislikePost($postid,$userId){
 }
 function didLike($userId, $postid){
     // $count_check = $GLOBALS["database"]->query("SELECT COUNT(*) AS c FROM users WHERE username ='" . $username ."' OR mail='".$email."'");
-    $count_check = $GLOBALS["database"]->query("SELECT COUNT(*) FROM likes WHERE userid=".$userId." AND postid=".$postid."");
+    $count_check = $GLOBALS["database"]->query("SELECT COUNT(*) as c FROM likes WHERE userid=".$userId." AND postid=".$postid."");
     $count = $count_check->fetch_row();
 
     return($count[0] != "0");
+}
+
+
+function displayPosts($posts) {
+    foreach ($posts as &$p) {
+        $liked=didLike($p["postid"], $_SESSION["id"]);
+    ?>
+    <div class="feed-item">
+        <img width="500px" src="./uploads/<?php echo $p["pic"] ?>" />
+        <div>
+            <div>
+                <p><b><a href="./profile.php?userid=<?php echo $p["id"] ?>"><?php echo $p["username"] ?></a></b>: <?php echo $p["msg"] ?></p>
+                <p><?php echo "Fix" ?></p>
+            </div>
+            <div class="buttons">
+                <?php if ($liked==false){ ?><a href="./like.php?id=<?php echo $p["postid"] ?>">Like</a><?php } else { ?><a href="./dislike.php?id=<?php echo $p["postid"] ?>">dislike</a><?php } ?>
+            </div>
+        </div>
+    </div>
+    <?php
+    }
 }

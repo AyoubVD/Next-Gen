@@ -3,6 +3,7 @@
 session_start();
 include_once '../include/users.php';
 include_once '../include/feed.php';
+include_once '../include/post.php';
 include_once '../include/PathLogging.php';
 
 if (empty($_SESSION)){
@@ -10,8 +11,10 @@ if (empty($_SESSION)){
 }
 
 if (isset($_GET["userid"])){
-
 	$user=getUser($_GET["userid"]);
+	if(isset($_POST["follow"])){
+		followUser($_SESSION["id"], $_GET["userid"]);
+	}
 }else {
 	$user=getUser($_SESSION["id"]);
 }
@@ -37,6 +40,9 @@ $posts=GetUserfeed($user["id"]);
 					<h3 class="cssui-usercard__name"><?php echo $user["username"] ?></h3>
 				</div>
 			</header>
+				<form method="POST">
+					<button value="a" name="follow">FOLLOW</button>
+				</form>
 			<div class="cssui-usercard__content">
 				<div class="cssui-slider">
 

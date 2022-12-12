@@ -1,6 +1,5 @@
 <?php
 session_start();
-$title="Feed";
 // Include for the feed
 include_once '../include/feed.php';
 include_once '../include/post.php';
@@ -9,15 +8,15 @@ if (empty($_SESSION)){
     header('Location: ./index.php');
 }
 
+$title="FollowFeed";
 // Request feed for index
-$posts=GetFeed(); // [["userName" => "Test", "msg" => "Test", "likes" => 0, "postid" => -1, "img" => "https://miro.medium.com/max/651/1*rf4QAy4yYPdfuLsZ7NrHZA.jpeg"]]
+$posts=Getfollowfeed($_SESSION["id"]); // [["userName" => "Test", "msg" => "Test", "likes" => 0, "postid" => -1, "img" => "https://miro.medium.com/max/651/1*rf4QAy4yYPdfuLsZ7NrHZA.jpeg"]]
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <?php include './head.php'; ?>
-
 <body>
     <?php
     include './navbar.html';

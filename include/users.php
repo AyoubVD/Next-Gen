@@ -26,11 +26,11 @@ function getUser($userId) {
     return $result;
 }
 
-function followUser($userId, $followId) {
-    $GLOBALS["database"]->query("INSERT INTO follows(userid, followid) VALUES ('".$userId."', '".$followId."');");
+function followUser($userId, $userFollowingid) {
+    $GLOBALS["database"]->query("INSERT INTO followfeed(userid, userFollowingid) VALUES ('".$userId."', '".$userFollowingid."');");
 }
-function unFollowUser($userId, $followId) {
-    $GLOBALS["database"]->query("DELETE FROM follows WHERE userid='".$userId."' AND followid='".$followId."';");
+function unFollowUser($userId, $userFollowingid) {
+    $GLOBALS["database"]->query("DELETE FROM follows WHERE userid='".$userId."' AND userFollowingid='".$userFollowingid."';");
 }
 function deleteUsers($userId) {
     $GLOBALS["database"]->query("UPDATE users SET isDeleted=TRUE WHERE id='".$userId."';");
