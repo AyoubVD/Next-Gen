@@ -1,9 +1,12 @@
 <?php
+session_start();
 include_once '../include/post.php';
 
 // Call function
 if (isset($_POST['description'])) {
-    post();
+    if (isset($_FILES['myfile'])){
+        post($_SESSION["id"], $_POST["description"], $_FILES["myfile"]);
+    }
 }
 ?>
 

@@ -9,30 +9,40 @@ CREATE TABLE users(
     username VARCHAR(255) UNIQUE,
     profilepic VARCHAR(32),
     bannerpic VARCHAR(32),
-    isAdmin BOOL
+    isAdmin BOOLEAN DEFAULT FALSE,
+    isDeleted BOOLEAN DEFAULT FALSE
 );
 
-CREATE TABLE feed(
-    feedid INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE followfeed(
+    userid int,
+    userFollowingid int,
+    FOREIGN KEY (userid) REFERENCES users(id),
+    FOREIGN KEY (userFollowingid) REFERENCES users(id),
+    UNIQUE(userid, userFollowingid)
+);
+
+CREATE TABLE post(
+    postid INT PRIMARY KEY AUTO_INCREMENT,
     userid int,
     msg VARCHAR(255) ,
     pic VARCHAR(32),
-    likes int,
-    /*dislikes int,*/
-
+    isDeleted BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (userid) REFERENCES users(id)
 );
 
 CREATE TABLE comments(
     commentid INT PRIMARY KEY AUTO_INCREMENT,
-    feedid int,
+    postid int,
     userid int,
     comment VARCHAR(255) ,
-    likes int,
-    /*--dislikes int,*/
-    FOREIGN KEY (feedid) REFERENCES feed(feedid)
+    /*likes int,*/
+    isDeleted BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (postid) REFERENCES post(postid)
 );
-
-
-
-CREATE VIEW v_user_post AS SELECT p.*, u.username FROM feed as p JOIN users as u WHERE u.id = p.userid;
+CREATE TABLE likes(
+    userid int,
+    postid int,
+    FOREIGN KEY (userid) REFERENCES users(id),
+    FOREIGN KEY (postid) REFERENCES post(postid),
+    UNIQUE(userid, postid)
+);

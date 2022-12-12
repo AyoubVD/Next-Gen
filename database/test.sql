@@ -1,0 +1,1 @@
+SELECT fd.*, u.username, u.profilepic FROM post as fd JOIN users as u ON (fd.userid) = u.id JOIN followfeed as ff ON (u.id) = ff.userFollowingid WHERE ff.userid=1

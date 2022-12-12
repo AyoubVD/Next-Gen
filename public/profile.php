@@ -2,13 +2,22 @@
 // Include for the feed
 session_start();
 include_once '../include/users.php';
+include_once '../include/feed.php';
 include_once '../include/PathLogging.php';
 
 if (empty($_SESSION)){
     header('Location: ./index.php');
 }
 
-$user=getUser($_SESSION["id"]);
+if (isset($_GET["userid"])){
+
+	$user=getUser($_GET["userid"]);
+}else {
+	$user=getUser($_SESSION["id"]);
+}
+
+$posts=GetUserfeed($user["id"]);
+
 ?>
 
 <html>
@@ -118,6 +127,9 @@ $user=getUser($_SESSION["id"]);
 			</a>
 		</footer>
 	</article>
+	<div>
+		<?php displayPosts($posts); ?>
+	</div>
   <footer class="footer">
     <div class="main-container footer__container">
       <div class="footer__column">

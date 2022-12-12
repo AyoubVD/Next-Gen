@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Include for the feed
 include_once '../include/feed.php';
 
@@ -28,23 +29,7 @@ $posts=GetFeed(); // [["userName" => "Test", "msg" => "Test", "likes" => 0, "pos
     ?>
 
     <?php
-        foreach ($posts as &$p) {
-        ?>
-        <div class="feed-item">
-            <img src="./uploads/<?php echo $p["pic"] ?>" />
-            <div>
-                <div>
-                    <p><b><?php echo $p["username"] ?></b>: <?php echo $p["msg"] ?></p>
-                    <p><?php echo $p["likes"] ?></p>3
-                </div>
-                <div class="buttons">
-                    <a href="./like.php?id=<?php echo $p["feedid"] ?>">Like</a>
-                    <a href="./dislike.php?id=<?php echo $p["feedid"] ?>">Dislike</a>
-                </div>
-            </div>
-        </div>
-        <?php
-        }
+        displayPosts($posts);
         ?>
         <li class="list-group-item">
             <div class="content">
