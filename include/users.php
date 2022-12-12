@@ -3,10 +3,13 @@ include_once '../GLOBALS.php';
 include_once INCLUDE_PATH . "database.php";
 
 function login($username,$password){
-    $hashedpw= md5($password);
-    $pw_check = $GLOBALS["database"]->query(("SELECT * FROM users WHERE username='".$username."' AND pwd ='".$hashedpw."' AND isDeleted=FALSE;"));
+    // $hashedpw= md5($password);
+    $pw_check = $GLOBALS["database"]->query(("SELECT * FROM users WHERE username='".$username."' AND isDeleted=FALSE;"));
     $result = $pw_check->fetch_assoc();
-    return $result;
+    if (password_verify($password, $result['pwd'])){
+        return $result;
+    }
+    return null;
 }
 
 function register($username,$password,$password2,$email){
@@ -15,7 +18,7 @@ function register($username,$password,$password2,$email){
     $count = $count_check->fetch_row();
 
     if ($count[0] != "0") return false;
-    $hashedpassword = md5($password);
+    $hashedpassword = password_hash($password, PASSWORD_BCRYPT);
     $GLOBALS["database"]->query("INSERT INTO users(username, mail, pwd) VALUES ('".$username."', '".$email."', '".$hashedpassword."');") ;
     return true; 
 }

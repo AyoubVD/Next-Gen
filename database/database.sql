@@ -4,7 +4,7 @@ USE iamsocial;
 
 CREATE TABLE users(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    pwd VARCHAR(32) NOT NULL,
+    pwd VARCHAR(255) NOT NULL,
     mail VARCHAR(255) UNIQUE,
     username VARCHAR(255) UNIQUE,
     profilepic VARCHAR(32),

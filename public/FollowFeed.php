@@ -22,10 +22,8 @@ $posts=Getfollowfeed($_SESSION["id"]); // [["userName" => "Test", "msg" => "Test
     include './navbar.html';
     ?>
 
-    <?php
-        displayPosts($posts);
-        ?>
-        <li class="list-group-item">
+<li class="list-group-item">
+    <?php displayPosts($posts); ?>
             <div class="content">
 
             </div>

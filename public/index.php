@@ -1,6 +1,11 @@
 <?php
+session_start();
 include_once '../include/users.php';
 include_once '../include/PathLogging.php';
+
+if(isset($_SESSION['id'])){
+	header('Location: ./FeedPlaceholder.php');
+}
 
 if(!empty($_POST) == true){
   $username=$_POST["username"];
@@ -8,7 +13,6 @@ if(!empty($_POST) == true){
 
   $loggedin=login($username,$password);
   if ($loggedin){
-    session_start();
     $_SESSION["id"]=$loggedin["id"];
     header('Location: ./FeedPlaceholder.php');
   }
