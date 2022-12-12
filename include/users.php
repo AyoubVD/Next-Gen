@@ -26,6 +26,12 @@ function getUser($userId) {
     return $result;
 }
 
+function getUsers(){
+    $pw_check = $GLOBALS["database"]->query(("SELECT id,username,mail,profilepic FROM users"));
+    $result = $pw_check->fetch_all(MYSQLI_ASSOC);
+    return $result;
+}
+
 function followUser($userId, $userFollowingid) {
     $GLOBALS["database"]->query("INSERT INTO followfeed(userid, userFollowingid) VALUES ('".$userId."', '".$userFollowingid."');");
 }

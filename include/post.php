@@ -51,6 +51,8 @@ function didLike($userId, $postid){
 }
 
 
+
+
 function displayPosts($posts) {
     foreach ($posts as &$p) {
         $liked=didLike($p["postid"], $_SESSION["id"]);
