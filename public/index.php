@@ -7,16 +7,7 @@ if(isset($_SESSION['id'])){
 	header('Location: ./FeedPlaceholder.php');
 }
 
-if(!empty($_POST) == true){
-  $username=$_POST["username"];
-  $password=$_POST["password"];
 
-  $loggedin=login($username,$password);
-  if ($loggedin){
-    $_SESSION["id"]=$loggedin["id"];
-    header('Location: ./FeedPlaceholder.php');
-  }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,6 +48,22 @@ if(!empty($_POST) == true){
 					<input type="text" placeholder="user name" id="username" name="username" required>
 					<br>
 					<input type="password" placeholder="password" id="password" name="password" required>
+					<?php
+					if(!empty($_POST) == true){
+						error_reporting(E_ERROR | E_PARSE);
+						$username=$_POST["username"];
+						$password=$_POST["password"];
+					  
+						$loggedin=login($username,$password);
+						if($loggedin==null){
+						  echo "Wrong username or password";
+						}
+						else{
+						  $_SESSION["id"]=$loggedin["id"];
+						  header('Location: ./FeedPlaceholder.php');
+						}
+					  }
+					  ?>
 				</div>
 
 				<br><br>

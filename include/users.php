@@ -7,9 +7,14 @@ function login($username,$password){
     $pw_check = $GLOBALS["database"]->query(("SELECT * FROM users WHERE username='".$username."' AND isDeleted=FALSE;"));
     $result = $pw_check->fetch_assoc();
     if (password_verify($password, $result['pwd'])){
+        if($result==null){
+            return null;
+        }
+        else{
+            return $result;
+        }
         return $result;
     }
-    return null;
 }
 
 function register($username,$password,$password2,$email){
