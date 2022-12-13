@@ -38,7 +38,7 @@
 						</a>
 						<a class="nav-link" id="application-tab" data-toggle="pill" href="#application" role="tab" aria-controls="application" aria-selected="false">
 							<i class="fa fa-tv text-center mr-1"></i> 
-							Application
+							Following
 						</a>
 						<a class="nav-link" id="notification-tab" data-toggle="pill" href="#notification" role="tab" aria-controls="notification" aria-selected="false">
 							<i class="fa fa-bell text-center mr-1"></i> 
