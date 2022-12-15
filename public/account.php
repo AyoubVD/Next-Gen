@@ -1,3 +1,10 @@
+<?php
+session_start();
+	if (empty($_SESSION)){
+		header('Location: ./index.php');
+	}
+	?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,12 +16,32 @@
 	<link rel="stylesheet" type="text/css" href="./Css/acount.css">
 </head>
 	<?php
-	session_start();
+<<<<<<< Updated upstream
+=======
+	
+>>>>>>> Stashed changes
 	include_once '../include/users.php';
 	include_once '../include/feed.php';
 	include_once '../include/post.php';
 	include_once '../include/PathLogging.php';
 	include './navbar.php';
+
+	if (empty($_SESSION)){
+		header('Location: ./index.php');
+	}
+	
+	if (isset($_GET["userid"])){
+		$own=$_SESSION["id"] == $_GET["userid"];
+		$user=getUser($_GET["userid"]);
+		if(isset($_POST["follow"])){
+			followUser($_SESSION["id"], $_GET["userid"]);
+		}
+	}else {
+		$user=getUser($_SESSION["id"]);
+	}
+	
+
+
 	?>
 <body>
 	<section class="py-5 my-5">
@@ -37,10 +64,6 @@
 							<i class="fa fa-key text-center mr-1"></i> 
 							Password
 						</a>
-						<a class="nav-link" id="security-tab" data-toggle="pill" href="#security" role="tab" aria-controls="security" aria-selected="false">
-							<i class="fa fa-user text-center mr-1"></i> 
-							Security
-						</a>
 						<a class="nav-link" id="application-tab" data-toggle="pill" href="#application" role="tab" aria-controls="application" aria-selected="false">
 							<i class="fa fa-tv text-center mr-1"></i> 
 							Following
@@ -54,43 +77,32 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>First Name</label>
-								  	<input type="text" class="form-control" value="Avatar">
+								  	<input type="text" class="form-control" value=<?php echo $user["firstname"] ?>>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Last Name</label>
-								  	<input type="text" class="form-control" value="Aang">
+								  	<input type="text" class="form-control" value=<?php echo $user["lastname"] ?>>
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>Email</label>
-								  	<input type="text" class="form-control" value="thebender@gmail.com">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>Phone number</label>
-								  	<input type="text" class="form-control" value="+32486526720">
-								</div>
-							</div>
+
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Company</label>
-								  	<input type="text" class="form-control" value="Sokka Inc.">
+								  	<input type="text" class="form-control" value=<?php echo $user["company"] ?>>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Designation</label>
-								  	<input type="text" class="form-control" value="Master of the four elements">
+								  	<input type="text" class="form-control" value=<?php echo $user["designation"] ?>>
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
 								  	<label>Bio</label>
-									<textarea class="form-control" rows="4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore vero enim error similique quia numquam ullam corporis officia odio repellendus aperiam consequatur laudantium porro voluptatibus, itaque laboriosam veritatis voluptatum distinctio!</textarea>
+									<input type="text" value =" <?php echo $user["bio"]; ?>" class="form-control" rows="4"  name="bio"></input>
 								</div>
 							</div>
 						</div>
@@ -98,6 +110,15 @@
 							<button class="btn btn-primary">Update</button>
 							
 							<button class="btn btn-light">Cancel</button>
+						</div>
+												<div class="account-deletion">
+								
+								  	<label>Click here to permanently remove your account</label>
+								  	
+								
+						</div>
+						<div>
+						<button onclick="OpenDeletionDialogue()" class = "btn btn-delete">Delete</button>
 						</div>
 					</div>
 					<div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
@@ -130,47 +151,7 @@
 							<button class="btn btn-light">Cancel</button>
 						</div>
 					</div>
-					<div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
-						<h3 class="mb-4">Security Settings</h3>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>Login</label>
-								  	<input type="text" class="form-control">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>Two-factor auth</label>
-								  	<input type="text" class="form-control">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="recovery">
-										<label class="form-check-label" for="recovery">
-										Recovery
-										</label>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div>
-							<button class="btn btn-primary">Update</button>
-							
-							<button class="btn btn-light">Cancel</button>
-						</div>
-						<div class="account-deletion">
-								
-								  	<label>Click here to permanently remove your account</label>
-								  	
-								
-						</div>
-						<div>
-						<button onclick="OpenDeletionDialogue()" class = "btn btn-delete">Delete</button>
-						</div>
-					</div>
+
 					<div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="application-tab">
 						<h3 class="mb-4">Application Settings</h3>
 						<div class="row">
