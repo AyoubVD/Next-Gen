@@ -13,7 +13,7 @@ if (isset($_GET["searchUser"])) {
     $users = fuzzySearchAdmin("");
 }
 
-include_once '../include/PathLogging.php';
+//include_once '../include/PathLogging.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -202,6 +202,7 @@ include_once '../include/PathLogging.php';
                                                 <th>Username</th>
                                                 <th>Full Name</th>
                                                 <th>Email</th>
+                                                <th>Is deleted</th>
                                                 <th>Delete posts</th>
                                                 <th>Delete user</th>
                                             </tr>
@@ -251,7 +252,7 @@ include_once '../include/PathLogging.php';
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer"> © IMS <a href="index.php">I Am Social</a> </footer>
+            <footer class="footer"> © IMS <a href="./index.php">I Am Social</a> </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
