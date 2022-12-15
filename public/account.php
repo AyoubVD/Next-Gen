@@ -16,7 +16,6 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="./Css/acount.css">
 </head>
 	<?php
-	session_start();
 	include_once '../include/users.php';
 	include_once '../include/feed.php';
 	include_once '../include/post.php';
@@ -78,27 +77,16 @@ session_start();
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>First Name</label>
-								  	<input type="text" class="form-control" value="Avatar">
+								  	<input type="text" class="form-control" value=<?php echo $user["firstname"] ?>>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Last Name</label>
-								  	<input type="text" class="form-control" value="Aang">
+								  	<input type="text" class="form-control" value=<?php echo $user["lastname"] ?>>
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>Email</label>
-								  	<input type="text" class="form-control" value="thebender@gmail.com">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>Phone number</label>
-								  	<input type="text" class="form-control" value="+32486526720">
-								</div>
-							</div>
+
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Company</label>
@@ -108,13 +96,13 @@ session_start();
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Designation</label>
-								  	<input type="text" class="form-control" value="Master of the four elements">
+								  	<input type="text" class="form-control" value=<?php echo $user["designation"] ?>>
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
 								  	<label>Bio</label>
-									<textarea class="form-control" rows="4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore vero enim error similique quia numquam ullam corporis officia odio repellendus aperiam consequatur laudantium porro voluptatibus, itaque laboriosam veritatis voluptatum distinctio!</textarea>
+									<input type="text" value =" <?php echo $user["bio"]; ?>" class="form-control" rows="4"  name="bio"></input>
 								</div>
 							</div>
 						</div>
