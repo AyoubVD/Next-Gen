@@ -1,21 +1,6 @@
 <?php
-$servername= "localhost";
-$username="root";
-$password="";
-$dbname= "iamsocial";
-$teller=0;
+include_once '../include/users.php';
 
-$connect1= new mysqli($servername,$username,$password,$dbname);
- if ($connect1->connect_error){
-     die("connection failed: ". $connect1->connect_error);
- }
- else{
-     $sql="SELECT * FROM users ";
- }
-if( isset($_GET['id'])){
-    $id=$_GET['id'];
-}
- $sql="DELETE FROM `users` WHERE `id` = '$id' ";
- $qresult= $connect1 -> query($sql);
- header("Location: admin.php");
+deleteUsers($_GET['id']);
+header("Location: admin.php");
 ?>
