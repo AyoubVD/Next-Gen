@@ -12,14 +12,18 @@ if (empty($_SESSION)){
     header('Location: ./index.php');
 }
 
+var_dump($_GET);
 if (isset($_GET["userid"])){
-	$own=$_SESSION["id"] == $_GET["userid"];
-	$user=getUser($_GET["userid"]);
+	$uid=filter_var( $_GET["userid"], FILTER_SANITIZE_NUMBER_INT);
+	if ($uid == null) header('Location: ./index.php');
+	$own=$_SESSION["id"] == $uid;
+	$user=getUser($uid);
+	if ($user == null)header('Location: ./index.php');
 	if(isset($_POST["follow"])){
-		if(isfollowing($_SESSION["id"], $_GET["userid"])){
-			unfollowUser($_SESSION["id"], $_GET["userid"]);
+		if(isfollowing($_SESSION["id"], $uid)){
+			unfollowUser($_SESSION["id"], $uid);
 		} else {			
-			followUser($_SESSION["id"], $_GET["userid"]);
+			followUser($_SESSION["id"], $uid);
 		}
 	}
 
