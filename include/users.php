@@ -75,6 +75,11 @@ function isfollowing($userId, $userFollowingid) {
 function getFollowing($userId){
     $users = $GLOBALS["database"]->query(("select user.id, user.username from followfeed join users as user on user.id = followfeed.userFollowingid where followfeed.userid =".$userId));
     $result = $users->fetch_all(MYSQLI_ASSOC);
-    return $result;
-    
+    return $result;   
+}
+
+function fuzzySearch($search){
+    $users = $GLOBALS["database"]->query(("SELECT id,username,mail,profilepic FROM users WHERE username LIKE '%".$search."%' AND isDeleted=false"));
+    $result = $users->fetch_all(MYSQLI_ASSOC);
+    return $result;   
 }
