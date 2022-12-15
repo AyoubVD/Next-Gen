@@ -37,7 +37,7 @@ include_once './navbar.php';
         foreach ($users as &$u) {
             ?>
             <tr>
-                <td><?php echo $u["username"] ?></td>
+                <td><a href="./profile.php?userid=<?php echo $u["id"] ?>"><?php echo $u["username"] ?></a></td>
                 <td><a href="./verwijder.php?id=<?php echo $u["id"] ?>">Verwijder</a></td>
                 <td><a href="./verwijderPosts.php?id=<?php echo $u["id"] ?>">Verwijder posts</a></td>
             </tr>

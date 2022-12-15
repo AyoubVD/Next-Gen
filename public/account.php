@@ -3,6 +3,28 @@ session_start();
 	if (empty($_SESSION)){
 		header('Location: ./index.php');
 	}
+	include_once '../include/users.php';
+	include_once '../include/feed.php';
+	include_once '../include/post.php';
+	include_once '../include/PathLogging.php';
+
+	if(isset($_POST["update"])){
+		$firstname=$_POST["firstname"];
+		$lastname=$_POST["lastname"];
+		$bio=$_POST["bio"];
+		$userid=$_SESSION["id"];
+		$company=$_POST["company"];
+		$designation=$_POST["designation"];
+
+		updateInfo($firstname, $lastname, $bio, $company, $designation, $userid);
+	}
+	if(isset($_POST["password"])){
+		$oldpassword=$_POST["oldpass"];
+		$newpassword=$_POST["newpass"];
+		$newpassword2=$_POST["newpass2"];
+		$userid=$_SESSION["id"];
+		updatePassword($userid, $oldpassword, $newpassword, $newpassword2);
+	}
 	?>
 
 <!DOCTYPE html>
@@ -16,14 +38,6 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="./Css/acount.css">
 </head>
 	<?php
-<<<<<<< Updated upstream
-=======
-	
->>>>>>> Stashed changes
-	include_once '../include/users.php';
-	include_once '../include/feed.php';
-	include_once '../include/post.php';
-	include_once '../include/PathLogging.php';
 	include './navbar.php';
 
 	if (empty($_SESSION)){
@@ -73,83 +87,85 @@ session_start();
 				<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
 					<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
 						<h3 class="mb-4">Account Settings</h3>
+						<form method="POST">
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>First Name</label>
-								  	<input type="text" class="form-control" value=<?php echo $user["firstname"] ?>>
+								  	<input type="text" name="firstname"class="form-control" value=<?php echo $user["firstname"] ?>>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Last Name</label>
-								  	<input type="text" class="form-control" value=<?php echo $user["lastname"] ?>>
+								  	<input type="text"name="lastname" class="form-control" value=<?php echo $user["lastname"] ?>>
 								</div>
 							</div>
 
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Company</label>
-								  	<input type="text" class="form-control" value=<?php echo $user["company"] ?>>
+								  	<input type="text" name ="company"class="form-control" value=<?php echo $user["company"] ?>>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Designation</label>
-								  	<input type="text" class="form-control" value=<?php echo $user["designation"] ?>>
+								  	<input type="text" name="designation" class="form-control" value=<?php echo $user["designation"] ?>>
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
 								  	<label>Bio</label>
-									<input type="text" value =" <?php echo $user["bio"]; ?>" class="form-control" rows="4"  name="bio"></input>
+									<input type="text" name="bio" value =" <?php echo $user["bio"]; ?>" class="form-control" rows="4"  name="bio"></input>
 								</div>
 							</div>
 						</div>
 						<div>
-							<button class="btn btn-primary">Update</button>
+							<button name="update"class="btn btn-primary" value="u ma">Update</button>
 							
-							<button class="btn btn-light">Cancel</button>
+							<button name="cancel"class="btn btn-light">Cancel</button>
 						</div>
-												<div class="account-deletion">
+						</form>
+							<div class="account-deletion">
 								
-								  	<label>Click here to permanently remove your account</label>
-								  	
-								
-						</div>
+								<label>Click here to permanently remove your account</label>
+							</div>
 						<div>
-						<button onclick="OpenDeletionDialogue()" class = "btn btn-delete">Delete</button>
+							<a  class = "btn btn-delete" href="./deleteUser.php">Delete</a>
 						</div>
 					</div>
 					<div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
 						<h3 class="mb-4">Password Settings</h3>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>Old password</label>
-								  	<input type="password" class="form-control">
+						<form method="POST">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label >Old password</label>
+										<input name="oldpass" type="password" class="form-control">
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>New password</label>
-								  	<input type="password" class="form-control">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>New password</label>
+										<input name="newpass"type="password" class="form-control">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Confirm new password</label>
+										<input name="newpass2"type="password" class="form-control">
+									</div>
 								</div>
 							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>Confirm new password</label>
-								  	<input type="password" class="form-control">
-								</div>
+							<div>
+								<button name="password" value="a" class="btn btn-primary">Update</button>
+								
+								<button class="btn btn-light">Cancel</button>
 							</div>
-						</div>
-						<div>
-							<button class="btn btn-primary">Update</button>
-							
-							<button class="btn btn-light">Cancel</button>
-						</div>
+						</form>
 					</div>
 
 					<div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="application-tab">
