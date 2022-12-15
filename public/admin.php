@@ -13,7 +13,7 @@ if (isset($_GET["searchUser"])) {
     $users = getUsers();
 }
 
-include_once '../include/PathLogging.php';
+//include_once '../include/PathLogging.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -248,7 +248,7 @@ include_once '../include/PathLogging.php';
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer"> © IMS <a href="index.php">I Am Social</a> </footer>
+            <footer class="footer"> © IMS <a href="./index.php">I Am Social</a> </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
