@@ -30,11 +30,11 @@ $admin = isAdmin($_SESSION['id']);
             </li>
            
             <li class="nav-item">
-                <a class="nav-link" href="./FollowFeed.php"><i class="far fa-chart-bar"></i>Feed</a>
+                <a class="nav-link" href="./FeedPlaceHolder.php"><i class="far fa-chart-bar"></i>Feed</a>
             </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="./FollowFeed.php"><i class="far fa-chart-bar"></i>Profile</a>
+                <a class="nav-link" href="./profile.php"><i class="far fa-chart-bar"></i>Profile</a>
             </li>
             <?php if($admin){ ?>
             <li class="nav-item">
