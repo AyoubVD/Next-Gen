@@ -30,7 +30,7 @@ function getUser($userId) {
 }
 
 function getUsers(){
-    $pw_check = $GLOBALS["database"]->query(("SELECT id,username,mail,profilepic FROM users"));
+    $pw_check = $GLOBALS["database"]->query(("SELECT id,username,mail,profilepic FROM users WHERE isDeleted=false" ));
     $result = $pw_check->fetch_all(MYSQLI_ASSOC);
     return $result;
 }

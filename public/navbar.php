@@ -1,3 +1,9 @@
+<?php
+include_once '../include/users.php';
+
+$admin = isAdmin($_SESSION['id']);
+?>
+
 <link rel="stylesheet" href="./Css/navbar.css">
 <script src="./Scripts/navbar.js"></script>
 
@@ -29,11 +35,12 @@
                 <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
             </li>
 -->
+    
+        <?php if($admin){ ?>
             <li class="nav-item">
-                <a class="nav-link" href="./admin.php"><i class="far fa-chart-bar"></i>admin</a>
+                <a class="nav-link" href="./admin.php"><i class="far fa-chart-bar"></i>Admin</a>
             </li>
-                
-
+            <?php } ?>
             <li class="nav-item">
                 <a class="nav-link" href="./FollowFeed.php"><i class="far fa-chart-bar"></i>FollowFeed</a>
             </li>

@@ -10,53 +10,29 @@
 </head>
 <body>
 <?php
-$servername= "localhost";
-$username="root";
-$password="";
-$dbname= "iamsocial";
-$teller=0;
-
-$connect1= new mysqli($servername,$username,$password,$dbname);
- 
- if ($connect1->connect_error){
-     die("connection failed: ". $connect1->connect_error);
- }
- else{
-     $sql="SELECT * FROM users ";
- }
+include_once '../include/users.php';
 ?>
-<table border="1px">
- <tr>
- <td> mail </td>
- <td>username</td>
-</tr>
-<?php
- $qresult= $connect1 -> query($sql);
-if($qresult->num_rows > 0){
-    while($endresult = $qresult->fetch_assoc()){
-        $teller++;
-?>
-<tr>
-    <td>
-        <?php echo $endresult["mail"] ?>
-    </td>
-    <td>
-        <?php echo $endresult["username"] ?>
-    </td>
-    <td>
-        <a href="verwijder.php?id=<?php echo $endresult['id'] ?>">verwijder</a>
-    </td>
-    <td>
-        <a href="verwijderPosts.php?id=<?php echo $endresult['id'] ?>">verwijder posts</a>
-    </td>
-</tr>
-
-
-<?php
-    }
-}
-?>
-
+<div class="container mx-auto p-10" background-color="lightblue" width="100%">
+    <h1>Admin</h1>
+    <h2>Verwijder gebruikers</h2>
+    <table>
+        <tr>
+            <th>Gebruikersnaam</th>
+            <th>Verwijder</th>
+        </tr>
+        <?php
+        $users = getUsers();
+        foreach ($users as &$u) {
+            ?>
+            <tr>
+                <td><?php echo $u["username"] ?></td>
+                <td><a href="./verwijder.php?id=<?php echo $u["id"] ?>">Verwijder</a></td>
+                <td><a href="./verwijderPosts.php?id=<?php echo $u["id"] ?>">Verwijder posts</a></td>
+            </tr>
+        <?php
+        }
+        ?>
+    </table>
 </body>
 
 </html>

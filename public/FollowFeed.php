@@ -19,7 +19,7 @@ $posts=Getfollowfeed($_SESSION["id"]); // [["userName" => "Test", "msg" => "Test
 <?php include './head.php'; ?>
 <body>
     <?php
-    include './navbar.html';
+    include './navbar.php';
     ?>
 
 <li class="list-group-item">

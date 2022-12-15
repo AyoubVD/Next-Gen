@@ -20,7 +20,7 @@ $posts=GetFeed(); // [["userName" => "Test", "msg" => "Test", "likes" => 0, "pos
 
 <body>
     <?php
-    include './navbar.html';
+    include './navbar.php';
     ?>
 
     

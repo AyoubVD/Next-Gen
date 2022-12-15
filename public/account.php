@@ -14,7 +14,7 @@
 	include_once '../include/feed.php';
 	include_once '../include/post.php';
 	include_once '../include/PathLogging.php';
-	include './navbar.html';
+	include './navbar.php';
 	?>
 <body>
 	<section class="py-5 my-5">
