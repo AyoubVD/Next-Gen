@@ -7,6 +7,7 @@ if (empty($_SESSION)){
 if (isAdmin($_SESSION["id"]) == false) {
     header("Location: ./FeedPlaceHolder.php");
 }
+include_once '../include/PathLogging.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
