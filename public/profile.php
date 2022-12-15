@@ -33,7 +33,7 @@ $posts=GetUserfeed($user["id"]);
 	
     <body>
 	<?php
-		include "./navbar.html"
+		include "./navbar.php"
 		?>
     <article class="cssui-usercard">
 		<div class="cssui-usercard__body">

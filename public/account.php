@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="./Css/acount.css">
 </head>
 	<?php
-	include './navbar.html';
+	include './navbar.php';
 	?>
 <body>
 	<section class="py-5 my-5">
