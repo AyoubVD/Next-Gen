@@ -71,3 +71,10 @@ function isfollowing($userId, $userFollowingid) {
     if($result) return true;
     return false;
 }
+
+function getFollowing($userId){
+    $users = $GLOBALS["database"]->query(("select user.id, user.username from followfeed join users as user on user.id = followfeed.userFollowingid where followfeed.userid =".$userId));
+    $result = $users->fetch_all(MYSQLI_ASSOC);
+    return $result;
+    
+}
