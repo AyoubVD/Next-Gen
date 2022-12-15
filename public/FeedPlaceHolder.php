@@ -21,10 +21,16 @@ $posts=GetFeed(); // [["userName" => "Test", "msg" => "Test", "likes" => 0, "pos
 <body>
     <?php
     include './navbar.php';
+    // include './search.php';
     ?>
+
     <div style="background-color:#f2f3f4   ; width:60%; margin-left:20%;" >
-        
+        <div style="background-color:#f2f3f4   ; width:60%; margin-left:35%; text-align-center;" >
     <?php 
+    include './search.php';
+    ?>
+    </div>
+    <?php
     include './PostUpload.php';
     displayPosts($posts); ?>
     </div>
