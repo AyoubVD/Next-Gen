@@ -50,3 +50,14 @@ function isAdmin($userId) {
     $result = $pw_check->fetch_assoc();
     return $result['isAdmin'];
 }
+function updatePassword($userId,$oldpassword,$newpassword,$newPassword2){
+    if($newpassword!=$newPassword2) return false;
+    $pw_check = $GLOBALS["database"]->query(("SELECT * FROM users WHERE id='".$userId."';"));
+    $result = $pw_check->fetch_assoc();
+    if (password_verify($oldpassword, $result['pwd'])){
+        $hashedpassword = password_hash($newpassword, PASSWORD_BCRYPT);
+        $GLOBALS["database"]->query("UPDATE users SET pwd='".$hashedpassword."' WHERE id='".$userId."';") ;
+        return true;
+    }
+    return false;
+}
