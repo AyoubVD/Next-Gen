@@ -202,6 +202,7 @@ if (isset($_GET["searchUser"])) {
                                                 <th>Username</th>
                                                 <th>Full Name</th>
                                                 <th>Email</th>
+                                                <th>Is deleted</th>
                                                 <th>Delete posts</th>
                                                 <th>Delete user</th>
                                             </tr>
