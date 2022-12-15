@@ -23,16 +23,17 @@ $posts=GetFeed(); // [["userName" => "Test", "msg" => "Test", "likes" => 0, "pos
     include './navbar.html';
     ?>
 
-    <?php displayPosts($posts); ?>
-    <li class="list-group-item">
-        <div class="content">
+    
+    <!-- <li class="list-group-item mx-auto">
+        <div class="relative container mx-auto p-6" >
 
         </div>
         <img src="images/Pepe.jpg" alt="Pepe" width="500" height="333">
 
         <br>
-        <textarea rows="5" cols="50" name="description">
-                Your description
+        
+        <textarea rows="5" cols="50" name="description" >
+                Le pepe
             </textarea>
         <br>
 
@@ -43,8 +44,12 @@ $posts=GetFeed(); // [["userName" => "Test", "msg" => "Test", "likes" => 0, "pos
             </svg>
         </a>
         <script src="Scripts/like.js"> </script>
-    </li>
-    </ul>
+    </li> -->
+    
+    <?php 
+    include './PostUpload.php';
+    displayPosts($posts); ?>
 </body>
+
 
 </html>
