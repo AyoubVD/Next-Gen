@@ -16,6 +16,10 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="./Css/acount.css">
 </head>
 	<?php
+<<<<<<< Updated upstream
+=======
+	
+>>>>>>> Stashed changes
 	include_once '../include/users.php';
 	include_once '../include/feed.php';
 	include_once '../include/post.php';
@@ -59,10 +63,6 @@ session_start();
 						<a class="nav-link" id="password-tab" data-toggle="pill" href="#password" role="tab" aria-controls="password" aria-selected="false">
 							<i class="fa fa-key text-center mr-1"></i> 
 							Password
-						</a>
-						<a class="nav-link" id="security-tab" data-toggle="pill" href="#security" role="tab" aria-controls="security" aria-selected="false">
-							<i class="fa fa-user text-center mr-1"></i> 
-							Security
 						</a>
 						<a class="nav-link" id="application-tab" data-toggle="pill" href="#application" role="tab" aria-controls="application" aria-selected="false">
 							<i class="fa fa-tv text-center mr-1"></i> 
@@ -111,6 +111,15 @@ session_start();
 							
 							<button class="btn btn-light">Cancel</button>
 						</div>
+												<div class="account-deletion">
+								
+								  	<label>Click here to permanently remove your account</label>
+								  	
+								
+						</div>
+						<div>
+						<button onclick="OpenDeletionDialogue()" class = "btn btn-delete">Delete</button>
+						</div>
 					</div>
 					<div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
 						<h3 class="mb-4">Password Settings</h3>
@@ -142,47 +151,7 @@ session_start();
 							<button class="btn btn-light">Cancel</button>
 						</div>
 					</div>
-					<div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
-						<h3 class="mb-4">Security Settings</h3>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>Login</label>
-								  	<input type="text" class="form-control">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-								  	<label>Two-factor auth</label>
-								  	<input type="text" class="form-control">
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="recovery">
-										<label class="form-check-label" for="recovery">
-										Recovery
-										</label>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div>
-							<button class="btn btn-primary">Update</button>
-							
-							<button class="btn btn-light">Cancel</button>
-						</div>
-						<div class="account-deletion">
-								
-								  	<label>Click here to permanently remove your account</label>
-								  	
-								
-						</div>
-						<div>
-						<button onclick="OpenDeletionDialogue()" class = "btn btn-delete">Delete</button>
-						</div>
-					</div>
+
 					<div class="tab-pane fade" id="application" role="tabpanel" aria-labelledby="application-tab">
 						<h3 class="mb-4">Application Settings</h3>
 						<div class="row">
