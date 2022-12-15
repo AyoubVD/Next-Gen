@@ -15,7 +15,7 @@ CREATE TABLE users(
     lastname VARCHAR(255),
     bio VARCHAR(255),
     company VARCHAR(255),
-    designation VARCHAR(255),
+    designation VARCHAR(255)
 
 );
 
