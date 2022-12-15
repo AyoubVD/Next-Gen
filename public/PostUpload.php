@@ -7,8 +7,8 @@ if (isset($_POST['description'])) {
     }
 }
 ?>
+<div class="container mx-auto p-10 " background-color="7b68ee " width="100%" style="text-align:center;">
 
-<div class="container mx-auto p-10" background-color="lightblue" width="100%">
     <form action="<?php echo $_SERVER["PHP_SELF"]?>" method = "post" enctype="multipart/form-data">
         Description : <br />
         <textarea rows="5" cols="50" name="description"></textarea>
