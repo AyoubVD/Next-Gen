@@ -177,62 +177,30 @@ if (isAdmin($_SESSION["id"]) == false) {
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
                                                 <th>Username</th>
+                                                <th>Full Name</th>
                                                 <th>Email</th>
-                                                <th></th>
+                                                <th>Delete posts</th>
+                                                <th>Delete user</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Deshmukh</td>
-                                                <td>Prohaska</td>
-                                                <td>@Genelia</td>
-                                                <td></td>
-                                                <td><input type="button" value="Delete"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Deshmukh</td>
-                                                <td>Gaylord</td>
-                                                <td>@Ritesh</td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Sanghani</td>
-                                                <td>Gusikowski</td>
-                                                <td>@Govinda</td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Roshan</td>
-                                                <td>Rogahn</td>
-                                                <td>@Hritik</td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Joshi</td>
-                                                <td>Hickle</td>
-                                                <td>@Maruti</td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>Nigam</td>
-                                                <td>Eichmann</td>
-                                                <td>@Sonu</td>
-                                                <td>d</td>
-                                                <td></td>
-                                            </tr>
+                                        <?php
+        $users = getUsers();
+        foreach ($users as &$u) {
+            ?>
+            <tr>
+                <td><a href="./profile.php?userid=<?php echo $u["id"] ?>"><?php echo $u["id"] ?></a></td>
+                <td><a href="./profile.php?userid=<?php echo $u["id"] ?>"><?php echo $u["username"] ?></a></td>
+                <td><a href="./profile.php?userid=<?php echo $u["id"] ?>"><?php echo 'r' ?></a></td>
+                <td><a href="./progile.php?userid=<?php echo $u["id"] ?>"><?php echo $u["mail"] ?></a></td>
+                <td><a href="./verwijderPosts.php?id=<?php echo $u["id"] ?>">Clean up</a></td>
+                <td><a href="./verwijder.php?id=<?php echo $u["id"] ?>">Delete</a></td>
+            </tr>
+        <?php
+        }
+        ?>
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -250,7 +218,7 @@ if (isAdmin($_SESSION["id"]) == false) {
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer"> © 2021 Admin Pro by <a href="https://www.wrappixel.com/">wrappixel.com</a> </footer>
+            <footer class="footer"> © IMS <a href="index.php">I Am Social</a> </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
