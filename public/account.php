@@ -3,6 +3,7 @@ session_start();
 	if (empty($_SESSION)){
 		header('Location: ./index.php');
 	}
+	include_once '../include/users.php';
 	?>
 
 <!DOCTYPE html>
@@ -16,7 +17,7 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="./Css/acount.css">
 </head>
 	<?php
-	include_once '../include/users.php';
+	
 	include_once '../include/feed.php';
 	include_once '../include/post.php';
 	include_once '../include/PathLogging.php';
@@ -112,7 +113,7 @@ session_start();
 								<label>Click here to permanently remove your account</label>
 							</div>
 						<div>
-							<button  class = "btn btn-delete">Delete</button>
+							<a  class = "btn btn-delete" href="./deleteUser.php">Delete</a>
 						</div>
 					</div>
 					<div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
