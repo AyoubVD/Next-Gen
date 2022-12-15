@@ -64,7 +64,7 @@ function displayPosts($posts) {
             <div>
                 
             <div class="buttons">
-            <?php if ($liked==false){ ?><a href="./like.php?id=<?php echo $p["postid"] ?>">Like</a><?php } else { ?><a href="./dislike.php?id=<?php echo $p["postid"] ?>">dislike</a><?php } ?>
+            <?php if ($liked==false){ ?><a href="./like.php?id=<?php echo $p["postid"] ?>" style="">Like</a><?php } else { ?><a href="./dislike.php?id=<?php echo $p["postid"] ?>">dislike</a><?php } ?>
                 <p><?php echo "comments" ?></p>
     <hr>
                 
