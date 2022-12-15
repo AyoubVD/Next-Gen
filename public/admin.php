@@ -10,7 +10,7 @@ if (isAdmin($_SESSION["id"]) == false) {
 if (isset($_GET["searchUser"])) {
     $users = fuzzySearchAdmin($_GET["searchUser"]);
 } else {
-    $users = getUsers();
+    $users = fuzzySearchAdmin("");
 }
 
 include_once '../include/PathLogging.php';
@@ -222,6 +222,9 @@ include_once '../include/PathLogging.php';
                                                     </a></td>
                                                 <td><a href="./progile.php?userid=<?php echo $u["id"] ?>">
                                                         <?php echo $u["mail"] ?>
+                                                    </a></td>
+                                                    <td><a href="./progile.php?userid=<?php echo $u["id"] ?>">
+                                                        <?php echo $u["isDeleted"] ?>
                                                     </a></td>
                                                 <td><a href="./verwijderPosts.php?id=<?php echo $u["id"] ?>">Clean
                                                         up</a></td>
