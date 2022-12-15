@@ -15,6 +15,23 @@
 	include_once '../include/post.php';
 	include_once '../include/PathLogging.php';
 	include './navbar.php';
+
+	if (empty($_SESSION)){
+		header('Location: ./index.php');
+	}
+	
+	if (isset($_GET["userid"])){
+		$own=$_SESSION["id"] == $_GET["userid"];
+		$user=getUser($_GET["userid"]);
+		if(isset($_POST["follow"])){
+			followUser($_SESSION["id"], $_GET["userid"]);
+		}
+	}else {
+		$user=getUser($_SESSION["id"]);
+	}
+	
+
+
 	?>
 <body>
 	<section class="py-5 my-5">
@@ -78,7 +95,7 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Company</label>
-								  	<input type="text" class="form-control" value="Sokka Inc.">
+								  	<input type="text" class="form-control" value=<?php echo $user["company"] ?>>
 								</div>
 							</div>
 							<div class="col-md-6">
