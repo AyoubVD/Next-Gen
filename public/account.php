@@ -16,10 +16,6 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="./Css/acount.css">
 </head>
 	<?php
-<<<<<<< Updated upstream
-=======
-	
->>>>>>> Stashed changes
 	include_once '../include/users.php';
 	include_once '../include/feed.php';
 	include_once '../include/post.php';
@@ -111,14 +107,12 @@ session_start();
 							
 							<button class="btn btn-light">Cancel</button>
 						</div>
-												<div class="account-deletion">
+							<div class="account-deletion">
 								
-								  	<label>Click here to permanently remove your account</label>
-								  	
-								
-						</div>
+								<label>Click here to permanently remove your account</label>
+							</div>
 						<div>
-						<button onclick="OpenDeletionDialogue()" class = "btn btn-delete">Delete</button>
+							<button  class = "btn btn-delete">Delete</button>
 						</div>
 					</div>
 					<div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
