@@ -10,7 +10,13 @@ CREATE TABLE users(
     profilepic VARCHAR(32),
     bannerpic VARCHAR(32),
     isAdmin BOOLEAN DEFAULT FALSE,
-    isDeleted BOOLEAN DEFAULT FALSE
+    isDeleted BOOLEAN DEFAULT FALSE,
+    firstname VARCHAR(255),
+    lastname VARCHAR(255),
+    bio VARCHAR(255),
+    company VARCHAR(255),
+    designation VARCHAR(255),
+
 );
 
 CREATE TABLE followfeed(
