@@ -7,6 +7,12 @@ if (empty($_SESSION)) {
 if (isAdmin($_SESSION["id"]) == false) {
     header("Location: ./FeedPlaceHolder.php");
 }
+if (isset($_GET["searchUser"])) {
+    $users = fuzzySearchAdmin($_GET["searchUser"]);
+} else {
+    $users = getUsers();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,23 +109,7 @@ if (isAdmin($_SESSION["id"]) == false) {
                         </li>
                         <?php
                         // function to search for a record in the database
-                        function searchUser($search_term) {
-                            // connect to the database
-                            $pdo = new PDO('mysql:host=localhost;dbname=database_name', 'username', 'password');
-                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-                            // get search term from searchUser
-                            $search_term = $_POST['searchUser'];
-
-                            $query = "SELECT * FROM table_name WHERE name = :search_term";
-
-                            $stmt = $pdo->prepare($query);
-                            $stmt->execute(array(':search_term' => $search_term));
-
-                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                // process the retrieved records
-                            }
-                        }
+                        
                         // get search term from searchUser
                         // $search_term = $_POST['searchUser'];
 
@@ -217,7 +207,6 @@ if (isAdmin($_SESSION["id"]) == false) {
                                         </thead>
                                         <tbody>
                                             <?php
-                                        $users = getUsers();
                                         foreach ($users as &$u) {
                                         ?>
                                             <tr>

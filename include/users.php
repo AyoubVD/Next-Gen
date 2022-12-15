@@ -87,3 +87,9 @@ function fuzzySearch($search){
     $result = $users->fetch_all(MYSQLI_ASSOC);
     return $result;   
 }
+
+function fuzzySearchAdmin($search){
+    $users = $GLOBALS["database"]->query(("SELECT id,username,mail, firstname, lastname FROM users WHERE username LIKE '%".$search."%' "));
+    $result = $users->fetch_all(MYSQLI_ASSOC);
+    return $result;   
+}
