@@ -132,7 +132,7 @@ session_start();
 								<label>Click here to permanently remove your account</label>
 							</div>
 						<div>
-							<button  class = "btn btn-delete">Delete</button>
+							<a  class = "btn btn-delete" href="./deleteUser.php">Delete</a>
 						</div>
 					</div>
 					<div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="password-tab">
