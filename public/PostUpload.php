@@ -4,6 +4,7 @@
 if (isset($_POST['description'])) {
     if (isset($_FILES['myfile'])){
         post($_SESSION["id"], htmlspecialchars($_POST["description"]), $_FILES["myfile"]);
+        header("Location: " . $_SERVER["PHP_SELF"]);
     }
 }
 ?>

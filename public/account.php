@@ -9,19 +9,19 @@ session_start();
 	include_once '../include/PathLogging.php';
 
 	if(isset($_POST["update"])){
-		$firstname=$_POST["firstname"];
-		$lastname=$_POST["lastname"];
-		$bio=$_POST["bio"];
+		$firstname=htmlspecialchars($_POST["firstname"]);
+		$lastname=htmlspecialchars($_POST["lastname"]);
+		$bio=htmlspecialchars($_POST["bio"]);
 		$userid=$_SESSION["id"];
-		$company=$_POST["company"];
-		$designation=$_POST["designation"];
+		$company=htmlspecialchars($_POST["company"]);
+		$designation=htmlspecialchars($_POST["designation"]);
 
 		updateInfo($firstname, $lastname, $bio, $company, $designation, $userid);
 	}
 	if(isset($_POST["password"])){
-		$oldpassword=$_POST["oldpass"];
-		$newpassword=$_POST["newpass"];
-		$newpassword2=$_POST["newpass2"];
+		$oldpassword=htmlspecialchars($_POST["oldpass"]);
+		$newpassword=htmlspecialchars($_POST["newpass"]);
+		$newpassword2=htmlspecialchars($_POST["newpass2"]);
 		$userid=$_SESSION["id"];
 		updatePassword($userid, $oldpassword, $newpassword, $newpassword2);
 	}
@@ -98,26 +98,26 @@ session_start();
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>First Name</label>
-								  	<input type="text" name="firstname"class="form-control" value=<?php echo $user["firstname"] ?>>
+								  	<input type="text" name="firstname"class="form-control" value=<?php echo htmlspecialchars($user["firstname"]) ?>>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Last Name</label>
-								  	<input type="text"name="lastname" class="form-control" value=<?php echo $user["lastname"] ?>>
+								  	<input type="text"name="lastname" class="form-control" value=<?php echo htmlspecialchars($user["lastname"]) ?>>
 								</div>
 							</div>
 
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Company</label>
-								  	<input type="text" name ="company"class="form-control" value=<?php echo $user["company"] ?>>
+								  	<input type="text" name ="company"class="form-control" value=<?php echo htmlspecialchars($user["company"]) ?>>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Designation</label>
-								  	<input type="text" name="designation" class="form-control" value=<?php echo $user["designation"] ?>>
+								  	<input type="text" name="designation" class="form-control" value=<?php echo htmlspecialchars($user["designation"]) ?>>
 								</div>
 							</div>
 							<div class="col-md-12">
