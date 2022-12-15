@@ -6,11 +6,14 @@ include_once '../include/feed.php';
 include_once '../include/post.php';
 include_once '../include/PathLogging.php';
 
+$own=true;
+
 if (empty($_SESSION)){
     header('Location: ./index.php');
 }
 
 if (isset($_GET["userid"])){
+	$own=$_SESSION["id"] == $_GET["userid"];
 	$user=getUser($_GET["userid"]);
 	if(isset($_POST["follow"])){
 		followUser($_SESSION["id"], $_GET["userid"]);
@@ -40,9 +43,9 @@ $posts=GetUserfeed($user["id"]);
 					<h3 class="cssui-usercard__name"><?php echo $user["username"] ?></h3>
 				</div>
 			</header>
-				<form method="POST">
+				<?php if($own == false){ ?><form method="POST">
 					<button value="a" name="follow">FOLLOW</button>
-				</form>
+				</form><?php } ?>
 			<div class="cssui-usercard__content">
 				<div class="cssui-slider">
 

@@ -68,14 +68,7 @@ if(isset($_SESSION['id'])){
 
 				<br><br>
 
-				<div class="remember-me--forget-password">
-					<!-- Angular -->
-					<label>
-						<input type="checkbox" name="item" checked />
-						<span class="text-checkbox">Remember me</span>
-					</label>
-					<p>forget password?</p>
-				</div>
+				
 
 				<br>
 				<!-- <input type =  "submit" id = "btn" value = "Login" /> -->
