@@ -24,19 +24,6 @@ $posts=GetFeed(); // [["userName" => "Test", "msg" => "Test", "likes" => 0, "pos
     ?>
 
     
-    <!-- create centered div with centered content blue background -->
-    <div class="container mx-auto p-10" background-color="lightblue">
-        <!-- center the following <span class="userID">User</span> -->
-
-<span></span>
-        <br>
-        <img src="images/Pepe.jpg" width="20%" alt="" srcset="">
-        <br>
-        <span> description </span>
-        <br>
-        
-        <script src="Scripts/like.js"> </script>
-    </div>
     <!-- <li class="list-group-item mx-auto">
         <div class="relative container mx-auto p-6" >
 
