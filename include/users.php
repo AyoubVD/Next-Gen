@@ -61,3 +61,7 @@ function updatePassword($userId,$oldpassword,$newpassword,$newPassword2){
     }
     return false;
 }
+function updateInfo($firstname,$lastname,$bio,$company,$designation,$userId){
+    $GLOBALS["database"]->query("UPDATE users SET firstname='".$firstname."', lastname='".$lastname."', bio='".$bio."', company='".$company."', designation='".$designation."' WHERE id='".$userId."';") ;
+}
+    
