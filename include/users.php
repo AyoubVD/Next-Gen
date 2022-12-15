@@ -30,7 +30,7 @@ function getUser($userId) {
 }
 
 function getUsers(){
-    $pw_check = $GLOBALS["database"]->query(("SELECT id,username,mail,profilepic FROM users WHERE isDeleted=false" ));
+    $pw_check = $GLOBALS["database"]->query(("SELECT id,username,mail,profilepic, firstname, lastname FROM users WHERE isDeleted=false" ));
     $result = $pw_check->fetch_all(MYSQLI_ASSOC);
     return $result;
 }
@@ -38,9 +38,11 @@ function getUsers(){
 function followUser($userId, $userFollowingid) {
     $GLOBALS["database"]->query("INSERT INTO followfeed(userid, userFollowingid) VALUES ('".$userId."', '".$userFollowingid."');");
 }
+
 function unFollowUser($userId, $userFollowingid) {
     $GLOBALS["database"]->query("DELETE FROM followfeed WHERE userid='".$userId."' AND userFollowingid='".$userFollowingid."';");
 }
+
 function deleteUsers($userId) {
     $GLOBALS["database"]->query("UPDATE users SET isDeleted=TRUE WHERE id='".$userId."';");
 }
@@ -50,6 +52,7 @@ function isAdmin($userId) {
     $result = $pw_check->fetch_assoc();
     return $result['isAdmin'];
 }
+
 function updatePassword($userId,$oldpassword,$newpassword,$newPassword2){
     if($newpassword!=$newPassword2) return false;
     $pw_check = $GLOBALS["database"]->query(("SELECT * FROM users WHERE id='".$userId."';"));
@@ -61,6 +64,7 @@ function updatePassword($userId,$oldpassword,$newpassword,$newPassword2){
     }
     return false;
 }
+
 function updateInfo($firstname,$lastname,$bio,$company,$designation,$userId){
     $GLOBALS["database"]->query("UPDATE users SET firstname='".$firstname."', lastname='".$lastname."', bio='".$bio."', company='".$company."', designation='".$designation."' WHERE id='".$userId."';") ;
 }

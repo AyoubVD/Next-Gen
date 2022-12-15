@@ -1,7 +1,7 @@
-<?php   
+<?php
 session_start();
 include_once '../include/users.php';
-if (empty($_SESSION)){
+if (empty($_SESSION)) {
     header('Location: ./index.php');
 }
 if (isAdmin($_SESSION["id"]) == false) {
@@ -98,17 +98,48 @@ include_once '../include/PathLogging.php';
                                 class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i
                                     class="ti-search"></i></a>
                             <form class="app-search">
-                                <input type="text" class="form-control" placeholder="Search & enter"> <a
+                                <input type="text" class="form-control" placeholder="Search & enter" name="searchUser"> <a
                                     class="srh-btn"><i class="ti-close"></i></a>
                             </form>
                         </li>
+                        <?php
+                        // function to search for a record in the database
+                        function searchUser($search_term) {
+                            // connect to the database
+                            $pdo = new PDO('mysql:host=localhost;dbname=database_name', 'username', 'password');
+                            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                            // get search term from searchUser
+                            $search_term = $_POST['searchUser'];
+
+                            $query = "SELECT * FROM table_name WHERE name = :search_term";
+
+                            $stmt = $pdo->prepare($query);
+                            $stmt->execute(array(':search_term' => $search_term));
+
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                // process the retrieved records
+                            }
+                        }
+                        // get search term from searchUser
+                        // $search_term = $_POST['searchUser'];
+
+                        // $query = "SELECT * FROM table_name WHERE name = :search_term";
+
+                        // $stmt = $pdo->prepare($query);
+                        // $stmt->execute(array(':search_term' => $search_term));
+
+                        // while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        //     // process the retrieved records
+                        // }
+                        ?>
                         <!-- ============================================================== -->
                         <!-- Profile -->
                         <!-- ============================================================== -->
-                        <li class="nav-item"> 
+                        <li class="nav-item">
                             <a class="nav-link waves-effect waves-dark" href="#"><img src="./assets/images/admin.png"
                                     alt="user" class="profile-pic" /></a>
-                        </li> 
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -135,8 +166,8 @@ include_once '../include/PathLogging.php';
                                     class="mdi mdi-emoticon"></i><span class="hide-menu">Feed</span></a></li>
                     </ul>
                     <div class="text-center mt-4">
-                        <a href="./logout.php"
-                            class="btn waves-effect waves-light btn-info hidden-md-down text-white"> Logout</a>
+                        <a href="./logout.php" class="btn waves-effect waves-light btn-info hidden-md-down text-white">
+                            Logout</a>
                     </div>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -186,22 +217,31 @@ include_once '../include/PathLogging.php';
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php
-        $users = getUsers();
-        foreach ($users as &$u) {
-            ?>
-            <tr>
-                <td><a href="./profile.php?userid=<?php echo $u["id"] ?>"><?php echo $u["id"] ?></a></td>
-                <td><a href="./profile.php?userid=<?php echo $u["id"] ?>"><?php echo $u["username"] ?></a></td>
-                <td><a href="./profile.php?userid=<?php echo $u["id"] ?>"><?php echo 'r' ?></a></td>
-                <td><a href="./progile.php?userid=<?php echo $u["id"] ?>"><?php echo $u["mail"] ?></a></td>
-                <td><a href="./verwijderPosts.php?id=<?php echo $u["id"] ?>">Clean up</a></td>
-                <td><a href="./verwijder.php?id=<?php echo $u["id"] ?>">Delete</a></td>
-            </tr>
-        <?php
+                                            <?php
+                                        $users = getUsers();
+                                        foreach ($users as &$u) {
+                                        ?>
+                                            <tr>
+                                                <td><a href="./profile.php?userid=<?php echo $u["id"] ?>">
+                                                        <?php echo $u["id"] ?>
+                                                    </a></td>
+                                                <td><a href="./profile.php?userid=<?php echo $u["id"] ?>">
+                                                        <?php echo $u["username"] ?>
+                                                    </a></td>
+                                                <td><a href="./profile.php?userid=<?php echo $u["id"] ?>">
+                                                        <?php echo $u["firstname"] . " " . $u["lastname"] ?>
+                                                    </a></td>
+                                                <td><a href="./progile.php?userid=<?php echo $u["id"] ?>">
+                                                        <?php echo $u["mail"] ?>
+                                                    </a></td>
+                                                <td><a href="./verwijderPosts.php?id=<?php echo $u["id"] ?>">Clean
+                                                        up</a></td>
+                                                <td><a href="./verwijder.php?id=<?php echo $u["id"] ?>">Delete</a></td>
+                                            </tr>
+                                                                                                            <?php
         }
         ?>
-                                            
+
                                         </tbody>
                                     </table>
                                 </div>
