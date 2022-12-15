@@ -64,13 +64,13 @@ if (isAdmin($_SESSION["id"]) == false) {
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">
                         <!-- Logo icon --><b>
-                            <!-- <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" /> -->
+                            <!-- <img src="./assets/images/logo-icon.png" alt="homepage" class="dark-logo" /> -->
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span>
                             Admin
-                            <!-- <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" /> -->
+                            <!-- <img src="./assets/images/logo-text.png" alt="homepage" class="dark-logo" /> -->
                         </span>
                     </a>
                 </div>
@@ -134,7 +134,7 @@ if (isAdmin($_SESSION["id"]) == false) {
                                     class="mdi mdi-emoticon"></i><span class="hide-menu">Feed</span></a></li>
                     </ul>
                     <div class="text-center mt-4">
-                        <a href="https://wrappixel.com/templates/adminpro"
+                        <a href="./logout.php"
                             class="btn waves-effect waves-light btn-info hidden-md-down text-white"> Logout</a>
                     </div>
                 </nav>
