@@ -34,11 +34,8 @@ $admin = isAdmin($_SESSION['id']);
             <li class="nav-item active">
                 <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
             </li>
-
-            <li class="nav-item active">
-                <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
-            </li>
-        -->
+-->
+    
         <?php if($admin){ ?>
             <li class="nav-item">
                 <a class="nav-link" href="./admin.php"><i class="far fa-chart-bar"></i>Admin</a>
@@ -59,12 +56,6 @@ $admin = isAdmin($_SESSION['id']);
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="./logout.php"><i class="far fa-calendar-alt"></i>Logout</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Documents</a>
             </li>
         </ul>
     </div>

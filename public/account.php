@@ -16,6 +16,11 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="./Css/acount.css">
 </head>
 	<?php
+	session_start();
+	include_once '../include/users.php';
+	include_once '../include/feed.php';
+	include_once '../include/post.php';
+	include_once '../include/PathLogging.php';
 	include './navbar.php';
 	?>
 <body>
