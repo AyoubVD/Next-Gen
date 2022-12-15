@@ -46,7 +46,7 @@ function didLike($userId, $postid){
     // $count_check = $GLOBALS["database"]->query("SELECT COUNT(*) AS c FROM users WHERE username ='" . $username ."' OR mail='".$email."'");
     $count_check = $GLOBALS["database"]->query("SELECT COUNT(*) as c FROM likes WHERE userid=".$userId." AND postid=".$postid."");
     $count = $count_check->fetch_row();
-
+    
     return($count[0] != "0");
 }
 
@@ -55,7 +55,8 @@ function didLike($userId, $postid){
 
 function displayPosts($posts) {
     foreach ($posts as &$p) {
-        $liked=didLike($p["postid"], $_SESSION["id"]);
+        $liked=didLike($_SESSION["id"], $p["postid"]);
+        
     ?>
     <div class="feed-item">
         <img width="500px" src="./uploads/<?php echo $p["pic"] ?>" />
