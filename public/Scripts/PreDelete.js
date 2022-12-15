@@ -1,3 +1,3 @@
 function OpenDeletionDialogue() {
-ow = window.open("deleteaccount.php");
+ow = window.open("index.php");
   }

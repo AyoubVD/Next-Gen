@@ -22,6 +22,12 @@ $posts=GetFeed(); // [["userName" => "Test", "msg" => "Test", "likes" => 0, "pos
     <?php
     include './navbar.php';
     ?>
+    <div style="background-color:#f2f3f4   ; width:60%; margin-left:20%;" >
+        
+    <?php 
+    include './PostUpload.php';
+    displayPosts($posts); ?>
+    </div>
 
     
     <!-- <li class="list-group-item mx-auto">
@@ -46,9 +52,6 @@ $posts=GetFeed(); // [["userName" => "Test", "msg" => "Test", "likes" => 0, "pos
         <script src="Scripts/like.js"> </script>
     </li> -->
     
-    <?php 
-    include './PostUpload.php';
-    displayPosts($posts); ?>
 </body>
 
 
