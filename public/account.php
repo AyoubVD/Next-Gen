@@ -48,7 +48,11 @@ session_start();
 		$own=$_SESSION["id"] == $_GET["userid"];
 		$user=getUser($_GET["userid"]);
 		if(isset($_POST["follow"])){
-			followUser($_SESSION["id"], $_GET["userid"]);
+			if(isfollowing($_SESSION["id"], $_GET["userid"])){
+				unfollowUser($_SESSION["id"], $_GET["userid"]);
+			} else {				
+				followUser($_SESSION["id"], $_GET["userid"]);
+			}
 		}
 	}else {
 		$user=getUser($_SESSION["id"]);

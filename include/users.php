@@ -39,7 +39,7 @@ function followUser($userId, $userFollowingid) {
     $GLOBALS["database"]->query("INSERT INTO followfeed(userid, userFollowingid) VALUES ('".$userId."', '".$userFollowingid."');");
 }
 function unFollowUser($userId, $userFollowingid) {
-    $GLOBALS["database"]->query("DELETE FROM follows WHERE userid='".$userId."' AND userFollowingid='".$userFollowingid."';");
+    $GLOBALS["database"]->query("DELETE FROM followfeed WHERE userid='".$userId."' AND userFollowingid='".$userFollowingid."';");
 }
 function deleteUsers($userId) {
     $GLOBALS["database"]->query("UPDATE users SET isDeleted=TRUE WHERE id='".$userId."';");
@@ -65,3 +65,9 @@ function updateInfo($firstname,$lastname,$bio,$company,$designation,$userId){
     $GLOBALS["database"]->query("UPDATE users SET firstname='".$firstname."', lastname='".$lastname."', bio='".$bio."', company='".$company."', designation='".$designation."' WHERE id='".$userId."';") ;
 }
     
+function isfollowing($userId, $userFollowingid) {
+    $pw_check = $GLOBALS["database"]->query(("SELECT * FROM followfeed WHERE userid='".$userId."' AND userFollowingid='".$userFollowingid."';"));
+    $result = $pw_check->fetch_assoc();
+    if($result) return true;
+    return false;
+}

@@ -16,8 +16,13 @@ if (isset($_GET["userid"])){
 	$own=$_SESSION["id"] == $_GET["userid"];
 	$user=getUser($_GET["userid"]);
 	if(isset($_POST["follow"])){
-		followUser($_SESSION["id"], $_GET["userid"]);
+		if(isfollowing($_SESSION["id"], $_GET["userid"])){
+			unfollowUser($_SESSION["id"], $_GET["userid"]);
+		} else {			
+			followUser($_SESSION["id"], $_GET["userid"]);
+		}
 	}
+
 }else {
 	$user=getUser($_SESSION["id"]);
 }
@@ -44,7 +49,7 @@ $posts=GetUserfeed($user["id"]);
 				</div>
 			</header>
 				<?php if($own == false){ ?><form method="POST">
-					<button value="a" name="follow">FOLLOW</button>
+					<button value="a" name="follow"><?php echo isfollowing($_SESSION["id"], $_GET["userid"])? "Unfollow": "Follow" ?></button>
 				</form><?php } ?>
 			<div class="cssui-usercard__content">
 				<div class="cssui-slider">
