@@ -3,7 +3,7 @@
 // Call function
 if (isset($_POST['description'])) {
     if (isset($_FILES['myfile'])){
-        post($_SESSION["id"], $_POST["description"], $_FILES["myfile"]);
+        post($_SESSION["id"], htmlspecialchars($_POST["description"]), $_FILES["myfile"]);
     }
 }
 ?>

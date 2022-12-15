@@ -50,9 +50,12 @@ if(isset($_SESSION['id'])){
 					<input type="password" placeholder="password" id="password" name="password" required>
 					<?php
 					if(!empty($_POST) == true){
+						$data = htmlspecialchars($_POST["username"]);
+						// var_dump($data);
+						// die;
 						error_reporting(E_ERROR | E_PARSE);
-						$username=$_POST["username"];
-						$password=$_POST["password"];
+						$username=htmlspecialchars($_POST["username"]);
+						$password=htmlspecialchars($_POST["password"]);
 					  
 						$loggedin=login($username,$password);
 						if($loggedin==null){
