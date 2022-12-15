@@ -192,7 +192,7 @@ if (isAdmin($_SESSION["id"]) == false) {
             <tr>
                 <td><a href="./profile.php?userid=<?php echo $u["id"] ?>"><?php echo $u["id"] ?></a></td>
                 <td><a href="./profile.php?userid=<?php echo $u["id"] ?>"><?php echo $u["username"] ?></a></td>
-                <td><a href="./profile.php?userid=<?php echo $u["id"] ?>"><?php echo 'r' ?></a></td>
+                <td><a href="./profile.php?userid=<?php echo $u["id"] ?>"><?php echo $u["firstname"]." ".$u["lastname"] ?></a></td>
                 <td><a href="./progile.php?userid=<?php echo $u["id"] ?>"><?php echo $u["mail"] ?></a></td>
                 <td><a href="./verwijderPosts.php?id=<?php echo $u["id"] ?>">Clean up</a></td>
                 <td><a href="./verwijder.php?id=<?php echo $u["id"] ?>">Delete</a></td>
