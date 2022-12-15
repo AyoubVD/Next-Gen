@@ -12,7 +12,6 @@ if (empty($_SESSION)){
     header('Location: ./index.php');
 }
 
-var_dump($_GET);
 if (isset($_GET["userid"])){
 	$uid=filter_var( $_GET["userid"], FILTER_SANITIZE_NUMBER_INT);
 	if ($uid == null) header('Location: ./index.php');

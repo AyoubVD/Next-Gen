@@ -2,6 +2,7 @@
 session_start();
 $title="Feed";
 // Include for the feed
+include_once '../include/PathLogging.php';
 include_once '../include/feed.php';
 include_once '../include/post.php';
 

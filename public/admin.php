@@ -13,6 +13,7 @@ if (isset($_GET["searchUser"])) {
     $users = getUsers();
 }
 
+include_once '../include/PathLogging.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
