@@ -1,13 +1,3 @@
-<?php   
-session_start();
-include_once '../include/users.php';
-if (empty($_SESSION)){
-    header('Location: ./index.php');
-}
-if (isAdmin($_SESSION["id"]) == false) {
-    header("Location: ./FeedPlaceHolder.php");
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,14 +11,14 @@ if (isAdmin($_SESSION["id"]) == false) {
     <meta name="description"
         content="Admin-Pro Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Admin</title>
+    <title>Admin-Pro Lite Template by WrapPixel</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/adminpro-lite/" />
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <!-- Bootstrap Core CSS -->
-    <link href="./assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="css/admin.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="css/colors/default-dark.css" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -46,7 +36,7 @@ if (isAdmin($_SESSION["id"]) == false) {
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">Admin</p>
+            <p class="loader__label">Admin Pro</p>
         </div>
     </div>
     <!-- ============================================================== -->
@@ -62,15 +52,14 @@ if (isAdmin($_SESSION["id"]) == false) {
                 <!-- Logo -->
                 <!-- ============================================================== -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="index.html">
                         <!-- Logo icon --><b>
-                            <!-- <img src="./assets/images/logo-icon.png" alt="homepage" class="dark-logo" /> -->
+                            <img src="../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span>
-                            Admin
-                            <!-- <img src="./assets/images/logo-text.png" alt="homepage" class="dark-logo" /> -->
+                            <img src="../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
                         </span>
                     </a>
                 </div>
@@ -104,10 +93,10 @@ if (isAdmin($_SESSION["id"]) == false) {
                         <!-- ============================================================== -->
                         <!-- Profile -->
                         <!-- ============================================================== -->
-                        <li class="nav-item"> 
-                            <a class="nav-link waves-effect waves-dark" href="#"><img src="./assets/images/admin.png"
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-dark" href="#"><img src="../assets/images/users/1.jpg"
                                     alt="user" class="profile-pic" /></a>
-                        </li> 
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -124,18 +113,24 @@ if (isAdmin($_SESSION["id"]) == false) {
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li> <a class="waves-effect waves-dark" href="account.php" aria-expanded="false"><i
-                                    class="mdi mdi-gauge"></i><span class="hide-menu">Account</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="./profile.php" aria-expanded="false"><i
+                        <li> <a class="waves-effect waves-dark" href="index.html" aria-expanded="false"><i
+                                    class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="pages-profile.html" aria-expanded="false"><i
                                     class="mdi mdi-account-check"></i><span class="hide-menu">Profile</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="admin.php" aria-expanded="false"><i
+                        <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i
                                     class="mdi mdi-table"></i><span class="hide-menu">Table</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="FollowFeed.php" aria-expanded="false"><i
-                                    class="mdi mdi-emoticon"></i><span class="hide-menu">Feed</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="icon-material.html" aria-expanded="false"><i
+                                    class="mdi mdi-emoticon"></i><span class="hide-menu">Icons</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="map-google.html" aria-expanded="false"><i
+                                    class="mdi mdi-earth"></i><span class="hide-menu">Map</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="pages-blank.html" aria-expanded="false"><i
+                                    class="mdi mdi-book-open-variant"></i><span class="hide-menu">Blank</span></a></li>
+                        <li> <a class="waves-effect waves-dark" href="pages-error-404.html" aria-expanded="false"><i
+                                    class="mdi mdi-help-circle"></i><span class="hide-menu">404</span></a></li>
                     </ul>
                     <div class="text-center mt-4">
-                        <a href="./logout.php"
-                            class="btn waves-effect waves-light btn-info hidden-md-down text-white"> Logout</a>
+                        <a href="https://wrappixel.com/templates/adminpro"
+                            class="btn waves-effect waves-light btn-info hidden-md-down text-white"> Upgrade to Pro</a>
                     </div>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -158,7 +153,12 @@ if (isAdmin($_SESSION["id"]) == false) {
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
-                        <h3 class="text-themecolor">Users</h3>
+                        <h3 class="text-themecolor">Profile</h3>
+                    </div>
+                    <div class="col-md-7 align-self-center">
+                        <a href="https://wrappixel.com/templates/adminpro/"
+                            class="btn waves-effect waves-light btn-danger pull-right hidden-sm-down"> Upgrade to
+                            Pro</a>
                     </div>
                 </div>
                 <!-- ============================================================== -->
@@ -167,79 +167,95 @@ if (isAdmin($_SESSION["id"]) == false) {
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
+                <!-- Row -->
                 <div class="row">
-                    <!-- column -->
-                    <div class="col-lg-12">
+                    <!-- Column -->
+                    <div class="col-lg-4 col-xlg-3">
                         <div class="card">
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Username</th>
-                                                <th>Email</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Deshmukh</td>
-                                                <td>Prohaska</td>
-                                                <td>@Genelia</td>
-                                                <td></td>
-                                                <td><input type="button" value="Delete"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Deshmukh</td>
-                                                <td>Gaylord</td>
-                                                <td>@Ritesh</td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>Sanghani</td>
-                                                <td>Gusikowski</td>
-                                                <td>@Govinda</td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Roshan</td>
-                                                <td>Rogahn</td>
-                                                <td>@Hritik</td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Joshi</td>
-                                                <td>Hickle</td>
-                                                <td>@Maruti</td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>Nigam</td>
-                                                <td>Eichmann</td>
-                                                <td>@Sonu</td>
-                                                <td>d</td>
-                                                <td></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <center class="mt-4"> <img src="../assets/images/users/5.jpg" class="img-circle"
+                                        width="150" />
+                                    <h4 class="card-title mt-2">Hanna Gover</h4>
+                                    <h6 class="card-subtitle">Accoubts Manager Amix corp</h6>
+                                    <div class="row text-center justify-content-md-center">
+                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i
+                                                    class="icon-people"></i>
+                                                <font class="font-medium">254</font>
+                                            </a></div>
+                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i
+                                                    class="icon-picture"></i>
+                                                <font class="font-medium">54</font>
+                                            </a></div>
+                                    </div>
+                                </center>
                             </div>
                         </div>
                     </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-8 col-xlg-9">
+                        <div class="card">
+                            <div class="card-body">
+                                <form class="form-horizontal form-material mx-2">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Full Name</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="Johnathan Doe"
+                                                class="form-control form-control-line">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="example-email" class="col-md-12">Email</label>
+                                        <div class="col-md-12">
+                                            <input type="email" placeholder="johnathan@admin.com"
+                                                class="form-control form-control-line" name="example-email"
+                                                id="example-email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Password</label>
+                                        <div class="col-md-12">
+                                            <input type="password" value="password"
+                                                class="form-control form-control-line">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Phone No</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="123 456 7890"
+                                                class="form-control form-control-line">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Message</label>
+                                        <div class="col-md-12">
+                                            <textarea rows="5" class="form-control form-control-line"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-12">Select Country</label>
+                                        <div class="col-sm-12">
+                                            <select class="form-control form-control-line">
+                                                <option>London</option>
+                                                <option>India</option>
+                                                <option>Usa</option>
+                                                <option>Canada</option>
+                                                <option>Thailand</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-success">Update Profile</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
                 </div>
+                <!-- Row -->
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -265,9 +281,9 @@ if (isAdmin($_SESSION["id"]) == false) {
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="./assets/plugins/jquery/jquery.min.js"></script>
+    <script src="../assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="./assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="js/perfect-scrollbar.jquery.min.js"></script>
     <!--Wave Effects -->
