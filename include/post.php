@@ -1,6 +1,7 @@
 <?php
 include_once '../GLOBALS.php';
 include_once INCLUDE_PATH . "database.php";
+include_once INCLUDE_PATH . "comments.php";
 
 
 // Make function
@@ -55,6 +56,7 @@ function didLike($userId, $postid){
 function displayPosts($posts) {
     foreach ($posts as &$p) {
         $liked=didLike($_SESSION["id"], $p["postid"]);
+        $comments = GetComments($p["postid"]);
         
     ?>
     <div class="container mx-auto p-10" background-color="lightblue" width="100%" style="text-align:center; background-color:7b68ee">
@@ -66,7 +68,15 @@ function displayPosts($posts) {
             <div class="buttons">
             <?php if ($liked==false){ ?><a href="./like.php?id=<?php echo $p["postid"] ?>">Like</a><?php } else { ?><a href="./dislike.php?id=<?php echo $p["postid"] ?>">dislike</a><?php } ?>
                 <p><?php echo "comments" ?></p>
-    <hr>
+                <?php
+                foreach ($comments as &$c) {
+                ?>
+                <div class="comment">
+                    <p><b><a href="./profile.php?userid=<?php echo $c["id"] ?>"><?php echo $c["username"] ?></a></b> <br> <?php echo $c["comment"] ?></p>
+                <?php
+                }
+                ?>
+            <hr>
                 
 
             </div>
