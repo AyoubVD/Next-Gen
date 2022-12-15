@@ -7,3 +7,4 @@ if(!$db){
 
 // define('database', $db);
 $GLOBALS["database"] = $db;
+

@@ -47,7 +47,7 @@ if($qresult->num_rows > 0){
         <a href="verwijder.php?id=<?php echo $endresult['id'] ?>">verwijder</a>
     </td>
     <td>
-        <a href="">verwijder posts</a>
+        <a href="verwijderPosts.php?id=<?php echo $endresult['id'] ?>">verwijder posts</a>
     </td>
 </tr>
 

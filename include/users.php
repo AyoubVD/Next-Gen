@@ -44,3 +44,9 @@ function unFollowUser($userId, $userFollowingid) {
 function deleteUsers($userId) {
     $GLOBALS["database"]->query("UPDATE users SET isDeleted=TRUE WHERE id='".$userId."';");
 }
+
+function isAdmin($userId) {
+    $pw_check = $GLOBALS["database"]->query(("SELECT * FROM users WHERE id='".$userId."';"));
+    $result = $pw_check->fetch_assoc();
+    return $result['isAdmin'];
+}
