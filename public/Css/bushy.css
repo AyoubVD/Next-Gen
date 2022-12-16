@@ -1,0 +1,49 @@
+.container{
+
+ display: flex;
+ flex-direction: row;
+ justify-content: flex-start;
+ align-items: flex-start;
+ flex-wrap: wrap;
+}
+.container .profileImage{
+    width: 4rem;
+    height: 4rem;
+    background-color: black;
+}
+.p-10{
+    gap: 1rem;
+    position: relative;
+   
+
+}
+.p-10 p{
+    text-align: left;
+}
+.p-10 .profile-post{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+   
+}
+
+.p-10 .profile-post .buttons{
+    width: 40rem;
+    text-align: left;   
+}
+
+.p-10 .profile-post .post-image{
+   width: 100%;
+   height: fit-content;
+   margin-bottom: 10px;
+}
+.p-10 .comment__input{
+    border-radius: 10px;
+    padding: 0.2rem;
+}
+.comment__container p{
+    display: none;
+}

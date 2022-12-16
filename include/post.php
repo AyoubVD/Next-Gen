@@ -60,25 +60,26 @@ function displayPosts($posts) {
         
     ?>
     <div class="container mx-auto p-10" background-color="lightblue" width="100%" style="text-align:center; background-color:7b68ee">
-        <p><b><a href="./profile.php?userid=<?php echo $p["id"] ?>"><?php echo $p["username"] ?></a></b> <br> <?php echo $p["msg"] ?></p>
-        <img width="30%" src="./uploads/<?php echo $p["pic"] ?>" />
+        
+    <img class="profileImage" width="30%" src="./uploads/<?php echo $p["pic"] ?>" />
         <div>
-            <div>
-                
+            <div class="profile-post">
+            <p><b><a href="./profile.php?userid=<?php echo $p["id"] ?>"><?php echo $p["username"] ?></a></b> <br> <?php echo $p["msg"] ?></p>
             <div class="buttons">
-            <?php if ($liked==false){ ?><a href="./like.php?id=<?php echo $p["postid"] ?>" style="">Like</a><?php } else { ?><a href="./dislike.php?id=<?php echo $p["postid"] ?>">dislike</a><?php } ?>
-                <p><?php echo "comments" ?></p>
+            <img width="30%" class="post-image" src="./uploads/<?php echo $p["pic"] ?>" />
+           
+            <?php if ($liked==false){ ?>   <a href="./like.php?id=<?php echo $p["postid"] ?>" style="">Like</a><br><span class="like__amount">Liked By x people</span><br>         <?php } else { ?><a href="./dislike.php?id=<?php echo $p["postid"] ?>">dislike</a><br><span class="like__amount">Liked By x people</span><br>  <?php } ?>
+           
+            <div class="comment__container">  <input type="text" class="comment__input" placeholder="Comment"/>  <div><img src="./assets/arrow-down.svg"><br><p><?php echo "comments" ?></p></div> </div>
                 <?php
                 foreach ($comments as &$c) {
                 ?>
-                <div class="comment">
-                    <p><b><a href="./profile.php?userid=<?php echo $c["id"] ?>"><?php echo $c["username"] ?></a></b> <br> <?php echo $c["comment"] ?></p>
+                <div>
+                    <p><b><a href="./profile.php?userid=<?php echo $c["id"] ?>"><?php echo $c["username"] ?></a></b> <br> <?php echo $c["comment"]?></p>
                 <?php
                 }
-                ?>
+                ?>       
             <hr>
-                
-
             </div>
             </div>
         </div>
