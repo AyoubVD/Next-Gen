@@ -20,11 +20,9 @@ $posts=GetFeed(); // [["userName" => "Test", "msg" => "Test", "likes" => 0, "pos
 <?php include './head.php'; ?>
 <link rel="stylesheet" href="./Css/bushy.css">
 <body>
-    <div style="background-color:#f2f3f4   ; width:60%; margin-left:20%;">
+    <div style="background-color:#f2f3f4   ; width:80%; margin-left:10%;">
         <div style="background-color:#f2f3f4   ; width:60%; margin-left:35%; text-align: center;">
-            <?php 
-            include './search.php';
-            ?>
+         
         </div>
         <?php
     include './PostUpload.php';

@@ -70,7 +70,7 @@ function displayPosts($posts) {
            
             <?php if ($liked==false){ ?>   <a href="./like.php?id=<?php echo $p["postid"] ?>" style="">Like</a><br><span class="like__amount">Liked By x people</span><br>         <?php } else { ?><a href="./dislike.php?id=<?php echo $p["postid"] ?>">dislike</a><br><span class="like__amount">Liked By x people</span><br>  <?php } ?>
            
-            <div class="comment__container">  <input type="text" class="comment__input" placeholder="Comment"/>  <div><img src="./assets/arrow-down.svg"><br><p><?php echo "comments" ?></p></div> </div>
+            <div class="comment__container">  <input type="text" class="comment__input" placeholder="Comment"/>  <div><p><?php echo "comments" ?></p></div> </div>
                 <?php
                 foreach ($comments as &$c) {
                 ?>
@@ -78,7 +78,7 @@ function displayPosts($posts) {
                     <p><b><a href="./profile.php?userid=<?php echo $c["id"] ?>"><?php echo $c["username"] ?></a></b> <br> <?php echo $c["comment"]?></p>
                 <?php
                 }
-                ?>       
+                ?>       <img src="./assets/arrow-down.svg">
             <hr>
             </div>
             </div>
