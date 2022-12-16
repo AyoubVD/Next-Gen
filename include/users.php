@@ -83,7 +83,7 @@ function getFollowing($userId){
 }
 
 function fuzzySearch($search){
-    $users = $GLOBALS["database"]->query(("SELECT id,username,mail,profilepic FROM users WHERE username LIKE '%".$search."%' AND isDeleted=false"));
+    $users = $GLOBALS["database"]->query(("SELECT id,username,firstname, lastname,profilepic FROM users WHERE username LIKE '%".$search."%' AND isDeleted=false"));
     $result = $users->fetch_all(MYSQLI_ASSOC);
     return $result;   
 }
