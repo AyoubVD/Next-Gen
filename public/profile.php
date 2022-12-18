@@ -1,45 +1,12 @@
 <?php
-error_reporting(E_ERROR | E_PARSE);
+// Include for the feed
 session_start();
-include_once '../include/users.php';
-if (empty($_SESSION)) {
-    header('Location: ./index.php');
-}
-$admin=false;
-if (isAdmin($_SESSION["id"]) == false) {
-    header("Location: ./FeedPlaceHolder.php");
-}else{
-    $admin = isAdmin($_SESSION['id']);
-}
-if (isset($_GET["searchUser"])) {
-    $users = fuzzySearch($_GET["searchUser"]);
-} else {
-    $users = fuzzySearch("");
-}
-if (isset($_GET["userid"])){
-	$uid=filter_var( $_GET["userid"], FILTER_SANITIZE_NUMBER_INT);
-	if ($uid == null) header('Location: ./index.php');
-	$own=$_SESSION["id"] == $uid;
-	$cUser=getUser($uid);
-	if ($cUser == null)header('Location: ./index.php');
-	if(isset($_POST["follow"])){
-		if(isfollowing($_SESSION["id"], $uid)){
-			unfollowUser($_SESSION["id"], $uid);
-		} else {			
-			followUser($_SESSION["id"], $uid);
-		}
-	}
-
-}else {
-	$cUser=getUser($_SESSION["id"]);
-}
-
 include_once '../include/users.php';
 include_once '../include/feed.php';
 include_once '../include/post.php';
 include_once '../include/PathLogging.php';
-$own=true;
 
+$own=true;
 
 if (empty($_SESSION)){
     header('Location: ./index.php');
@@ -91,6 +58,7 @@ $posts=GetUserfeed($user["id"]);
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="./Css/acount.css">
+    <link rel="stylesheet" href="./Css/bushy.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -129,7 +97,7 @@ $posts=GetUserfeed($user["id"]);
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span>
-                            <?php echo $cUser['username']; ?>
+                            <?php echo $user['username']; ?>
                             <!-- <img src="./assets/images/logo-text.png" alt="homepage" class="dark-logo" /> -->
                         </span>
                     </a>
@@ -352,7 +320,13 @@ $posts=GetUserfeed($user["id"]);
 		</footer>
 	</article>
 	<div>
-		<?php displayPosts($posts); ?>
+    <div style="background-color:#f2f3f4   ; width:80%; margin-left:10%;">
+                                        <div style="background-color:#f2f3f4   ; width:60%; margin-left:35%; text-align: center;"></div>
+                                        <?php
+                                        displayPosts($posts);
+                                        ?>
+                                        </div>
+                                    </div>
 	</div>
 			</div>
 		</div>

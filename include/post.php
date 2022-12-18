@@ -69,7 +69,14 @@ function displayPosts($posts) {
             <div class="buttons">
             <img class="post-image" src="./uploads/<?php echo $p["pic"] ?>" />
            <br>
-            <?php if ($liked==false){ ?>   <a href="./like.php?id=<?php echo $p["postid"] ?>" style="">Like</a><br><span class="like__amount">Liked By x people</span><br>         <?php } else { ?><a href="./dislike.php?id=<?php echo $p["postid"] ?>">dislike</a><br><span class="like__amount">Liked By x people</span><br>  <?php } ?>
+           <?php if ($liked==false){ ?>
+                <a href="./like.php?id=<?php echo $p["postid"] ?>" style="">Like</a>
+            <?php } else { ?>
+                <a href="./dislike.php?id=<?php echo $p["postid"] ?>">dislike</a>
+            <?php } ?>
+            <br>
+            <span class="like__amount">Liked By <?php echo $p["like"] ?></span>
+            <br>
            
             <div class="comment__container">  <input type="text" class="comment__input" placeholder="Comment"/>  <div><p><?php echo "comments" ?></p></div> </div>
                 <?php

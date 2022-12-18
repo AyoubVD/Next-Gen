@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once '../include/post.php';
+include_once '../include/users.php';
 if (empty($_SESSION)){
     header('Location: ./index.php');
 }

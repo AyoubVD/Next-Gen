@@ -1,16 +1,16 @@
 <?php
-error_reporting(E_ERROR | E_PARSE);
 session_start();
 include_once '../include/users.php';
 if (empty($_SESSION)) {
     header('Location: ./index.php');
 }
-$admin=false;
+$admin = isAdmin($_SESSION['id']);
+/*$admin=false;
 if (isAdmin($_SESSION["id"]) == false) {
     header("Location: ./FeedPlaceHolder.php");
 }else{
     $admin = isAdmin($_SESSION['id']);
-}
+}*/
 if (isset($_GET["searchUser"])) {
     $users = fuzzySearch($_GET["searchUser"]);
 } else {
@@ -20,8 +20,8 @@ if (isset($_GET["userid"])){
 	$uid=filter_var( $_GET["userid"], FILTER_SANITIZE_NUMBER_INT);
 	if ($uid == null) header('Location: ./index.php');
 	$own=$_SESSION["id"] == $uid;
-	$cUser=getUser($uid);
-	if ($cUser == null)header('Location: ./index.php');
+	$user=getUser($uid);
+	if ($user == null)header('Location: ./index.php');
 	if(isset($_POST["follow"])){
 		if(isfollowing($_SESSION["id"], $uid)){
 			unfollowUser($_SESSION["id"], $uid);
@@ -31,7 +31,7 @@ if (isset($_GET["userid"])){
 	}
 
 }else {
-	$cUser=getUser($_SESSION["id"]);
+	$user=getUser($_SESSION["id"]);
 }
 include_once '../include/feed.php';
 include_once '../include/post.php';
@@ -45,7 +45,7 @@ $title="FollowFeed";
 $posts=Getfollowfeed($_SESSION["id"]); // [["userName" => "Test", "msg" => "Test", "likes" => 0, "postid" => -1, "img" => "https://miro.medium.com/max/651/1*rf4QAy4yYPdfuLsZ7NrHZA.jpeg"]]
 
 
-//include_once '../include/PathLogging.php';
+include_once '../include/PathLogging.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,6 +66,7 @@ $posts=Getfollowfeed($_SESSION["id"]); // [["userName" => "Test", "msg" => "Test
     <link href="css/admin.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="css/colors/default-dark.css" id="theme" rel="stylesheet">
+    <link rel="stylesheet" href="./Css/bushy.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -104,7 +105,7 @@ $posts=Getfollowfeed($_SESSION["id"]); // [["userName" => "Test", "msg" => "Test
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span>
-                            <?php echo $cUser['username']; ?>
+                            <?php echo $user['username']; ?>
                             <!-- <img src="./assets/images/logo-text.png" alt="homepage" class="dark-logo" /> -->
                         </span>
                     </a>
@@ -169,36 +170,7 @@ $posts=Getfollowfeed($_SESSION["id"]); // [["userName" => "Test", "msg" => "Test
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        <aside class="left-sidebar">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li> <a class="waves-effect waves-dark" href="account.php" aria-expanded="false"><i
-                                    class="mdi mdi-gauge"></i><span class="hide-menu">Account</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="./FollowFeed.php" aria-expanded="false"><i
-                                    class="mdi mdi-account-check"></i><span class="hide-menu">Following feed</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="FeedPlaceHolder.php" aria-expanded="false"><i
-                                    class="mdi mdi-emoticon"></i><span class="hide-menu">Feed</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="newNav.php" aria-expanded="false"><i
-                                    class="mdi mdi-table"></i><span class="hide-menu">Search user</span></a></li>
-                        <?php if($admin){ ?>
-                        <li> <a class="waves-effect waves-dark" href="admin.php" aria-expanded="false"><i
-                                    class="mdi mdi-pen"></i><span class="hide-menu">Admin</span></a></li>
-                        <!-- <a class="nav-link" href="./admin.php"><i class="far fa-chart-bar"></i>Admin</a> -->
-                        </li>
-                        <?php } ?>
-                    </ul>
-                    <div class="text-center mt-4">
-                        <a href="./logout.php" class="btn waves-effect waves-light btn-info hidden-md-down text-white">
-                            Logout</a>
-                    </div>
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-        </aside>
+        <?php include "./imp/sidenav.php" ?>
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
@@ -230,7 +202,13 @@ $posts=Getfollowfeed($_SESSION["id"]); // [["userName" => "Test", "msg" => "Test
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
-                                <?php displayPosts($posts); ?>
+                                    <div style="background-color:#f2f3f4   ; width:80%; margin-left:10%;">
+                                        <div style="background-color:#f2f3f4   ; width:60%; margin-left:35%; text-align: center;"></div>
+                                        <?php
+                                        displayPosts($posts);
+                                        ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -1,40 +1,33 @@
 <?php
-error_reporting(E_ERROR | E_PARSE);
 session_start();
-include_once '../include/users.php';
-if (empty($_SESSION)) {
+if (empty($_SESSION)){
     header('Location: ./index.php');
 }
-$admin=false;
-if (isAdmin($_SESSION["id"]) == false) {
-    header("Location: ./FeedPlaceHolder.php");
-}else{
-    $admin = isAdmin($_SESSION['id']);
-}
-if (isset($_GET["searchUser"])) {
-    $users = fuzzySearch($_GET["searchUser"]);
-} else {
-    $users = fuzzySearch("");
-}
-if (isset($_GET["userid"])){
-	$uid=filter_var( $_GET["userid"], FILTER_SANITIZE_NUMBER_INT);
-	if ($uid == null) header('Location: ./index.php');
-	$own=$_SESSION["id"] == $uid;
-	$cUser=getUser($uid);
-	if ($cUser == null)header('Location: ./index.php');
-	if(isset($_POST["follow"])){
-		if(isfollowing($_SESSION["id"], $uid)){
-			unfollowUser($_SESSION["id"], $uid);
-		} else {			
-			followUser($_SESSION["id"], $uid);
-		}
-	}
+include_once '../include/users.php';
+include_once '../include/feed.php';
+include_once '../include/post.php';
+include_once '../include/PathLogging.php';
 
-}else {
-	$cUser=getUser($_SESSION["id"]);
+if(isset($_POST["update"])){
+    $firstname=htmlspecialchars($_POST["firstname"]);
+    $lastname=htmlspecialchars($_POST["lastname"]);
+    $bio=htmlspecialchars($_POST["bio"]);
+    $userid=$_SESSION["id"];
+    $company=htmlspecialchars($_POST["company"]);
+    $designation=htmlspecialchars($_POST["designation"]);
+
+    updateInfo($firstname, $lastname, $bio, $company, $designation, $userid);
+}
+if(isset($_POST["password"])){
+    $oldpassword=htmlspecialchars($_POST["oldpass"]);
+    $newpassword=htmlspecialchars($_POST["newpass"]);
+    $newpassword2=htmlspecialchars($_POST["newpass2"]);
+    $userid=$_SESSION["id"];
+    updatePassword($userid, $oldpassword, $newpassword, $newpassword2);
 }
 
-//include_once '../include/PathLogging.php';
+$user=getUser($_SESSION["id"]);
+$following = getFollowing($_SESSION["id"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,7 +90,7 @@ if (isset($_GET["userid"])){
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span>
-                            <?php echo $cUser['username']; ?>
+                            <?php echo $user['username']; ?>
                             <!-- <img src="./assets/images/logo-text.png" alt="homepage" class="dark-logo" /> -->
                         </span>
                     </a>
@@ -162,36 +155,7 @@ if (isset($_GET["userid"])){
         <!-- ============================================================== -->
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->
-        <aside class="left-sidebar">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li> <a class="waves-effect waves-dark" href="account.php" aria-expanded="false"><i
-                                    class="mdi mdi-gauge"></i><span class="hide-menu">Account</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="./FollowFeed.php" aria-expanded="false"><i
-                                    class="mdi mdi-account-check"></i><span class="hide-menu">Following feed</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="FeedPlaceHolder.php" aria-expanded="false"><i
-                                    class="mdi mdi-emoticon"></i><span class="hide-menu">Feed</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="newNav.php" aria-expanded="false"><i
-                                    class="mdi mdi-table"></i><span class="hide-menu">Search user</span></a></li>
-                        <?php if($admin){ ?>
-                        <li> <a class="waves-effect waves-dark" href="admin.php" aria-expanded="false"><i
-                                    class="mdi mdi-pen"></i><span class="hide-menu">Admin</span></a></li>
-                        <!-- <a class="nav-link" href="./admin.php"><i class="far fa-chart-bar"></i>Admin</a> -->
-                        </li>
-                        <?php } ?>
-                    </ul>
-                    <div class="text-center mt-4">
-                        <a href="./logout.php" class="btn waves-effect waves-light btn-info hidden-md-down text-white">
-                            Logout</a>
-                    </div>
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-        </aside>
+        <?php include "./imp/sidenav.php" ?>
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->

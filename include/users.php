@@ -24,7 +24,7 @@ function register($username,$password,$password2,$email){
 }
 
 function getUser($userId) {
-    $pw_check = $GLOBALS["database"]->query(("SELECT * FROM users WHERE id='".$userId."';"));
+    $pw_check = $GLOBALS["database"]->query(("SELECT * FROM users WHERE id='".$userId."' AND isDeleted=false;"));
     $result = $pw_check->fetch_assoc();
     return $result;
 }
