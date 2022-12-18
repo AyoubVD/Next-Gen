@@ -5,8 +5,11 @@ include_once '../include/users.php';
 if (empty($_SESSION)) {
     header('Location: ./index.php');
 }
+$admin=false;
 if (isAdmin($_SESSION["id"]) == false) {
     header("Location: ./FeedPlaceHolder.php");
+}else{
+    $admin = isAdmin($_SESSION['id']);
 }
 if (isset($_GET["searchUser"])) {
     $users = fuzzySearch($_GET["searchUser"]);
@@ -30,6 +33,7 @@ if (isset($_GET["userid"])){
 }else {
 	$cUser=getUser($_SESSION["id"]);
 }
+
 //include_once '../include/PathLogging.php';
 ?>
 <!DOCTYPE html>
@@ -172,6 +176,12 @@ if (isset($_GET["userid"])){
                                     class="mdi mdi-emoticon"></i><span class="hide-menu">Feed</span></a></li>
                         <li> <a class="waves-effect waves-dark" href="newNav.php" aria-expanded="false"><i
                                     class="mdi mdi-table"></i><span class="hide-menu">Search user</span></a></li>
+                        <?php if($admin){ ?>
+                        <li> <a class="waves-effect waves-dark" href="admin.php" aria-expanded="false"><i
+                                    class="mdi mdi-gauge"></i><span class="hide-menu">Admin</span></a></li>
+                        <!-- <a class="nav-link" href="./admin.php"><i class="far fa-chart-bar"></i>Admin</a> -->
+                        </li>
+                        <?php } ?>
                     </ul>
                     <div class="text-center mt-4">
                         <a href="./logout.php" class="btn waves-effect waves-light btn-info hidden-md-down text-white">
