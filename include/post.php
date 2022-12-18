@@ -61,7 +61,7 @@ function displayPosts($posts) {
     ?>
     <div class="container mx-auto p-10" background-color="lightblue" width="100%" style="text-align:center; background-color:7b68ee">
         
-    <img class="profileImage" width="30%" src="./Profileuploads/<?php echo $p["pic"] ?>" />
+    <img class="profileImage" width="30%" src="../public/images/pepe.jpg" />
         <div>
             <div class="profile-post">
             <p><b><a href="./profile.php?userid=<?php echo $p["id"] ?>"><?php echo $p["username"] ?></a></b> <br> <?php echo $p["msg"] ?></p>
