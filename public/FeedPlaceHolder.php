@@ -44,12 +44,8 @@ if (isset($_GET["userid"])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords"
-        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Admin-Pro lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Admin-Pro lite design, Admin-Pro lite dashboard bootstrap 5 dashboard template">
-    <meta name="description"
-        content="Admin-Pro Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Search</title>
+    <title>Feeds</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/adminpro-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon.png">
@@ -178,7 +174,7 @@ if (isset($_GET["userid"])){
                                     class="mdi mdi-table"></i><span class="hide-menu">Search user</span></a></li>
                         <?php if($admin){ ?>
                         <li> <a class="waves-effect waves-dark" href="admin.php" aria-expanded="false"><i
-                                    class="mdi mdi-gauge"></i><span class="hide-menu">Admin</span></a></li>
+                                    class="mdi mdi-pen"></i><span class="hide-menu">Admin</span></a></li>
                         <!-- <a class="nav-link" href="./admin.php"><i class="far fa-chart-bar"></i>Admin</a> -->
                         </li>
                         <?php } ?>
