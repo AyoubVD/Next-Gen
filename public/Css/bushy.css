@@ -35,10 +35,13 @@
     text-align: left;   
 }
 
-.p-10 .profile-post .post-image{
+.p-10 .profile-post {
    width: 100%;
    height: fit-content;
    margin-bottom: 10px;
+}
+.post-image{
+    width: 30%;
 }
 .p-10 .comment__input{
     border-radius: 10px;

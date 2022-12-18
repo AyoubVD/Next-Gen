@@ -143,8 +143,9 @@ if (isset($_GET["userid"])){
                         <!-- ============================================================== -->
                         <!-- Profile -->
                         <!-- ============================================================== -->
+                        <!-- IMAGE SOFTCODEN -->
                         <li class="nav-item">
-                            <a class="nav-link waves-effect waves-dark" href="profile.php"><img src="./assets/images/admin.png"
+                            <a class="nav-link waves-effect waves-dark" href="profile.php"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F04%2F90%2F37%2F0490378ab58d2a868b41ee37b91f2e81.jpg&f=1&nofb=1&ipt=5af84330168e9f2e079f3188ce30eb7b7144f59a476d84d5cac9db66acf416a6&ipo=images"
                                     alt="user" class="profile-pic" /></a>
                         </li>
                     </ul>

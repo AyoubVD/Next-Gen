@@ -61,13 +61,14 @@ function displayPosts($posts) {
     ?>
     <div class="container mx-auto p-10" background-color="lightblue" width="100%" style="text-align:center; background-color:7b68ee">
         
-    <img class="profileImage" width="30%" src="../public/images/pepe.jpg" />
+                <!-- img softcoden !!! -->
+    <img class="profileImage" width="30%" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F04%2F90%2F37%2F0490378ab58d2a868b41ee37b91f2e81.jpg&f=1&nofb=1&ipt=5af84330168e9f2e079f3188ce30eb7b7144f59a476d84d5cac9db66acf416a6&ipo=images" />
         <div>
             <div class="profile-post">
             <p><b><a href="./profile.php?userid=<?php echo $p["id"] ?>"><?php echo $p["username"] ?></a></b> <br> <?php echo $p["msg"] ?></p>
             <div class="buttons">
-            <img width="30%" class="post-image" src="./uploads/<?php echo $p["pic"] ?>" />
-           
+            <img class="post-image" src="./uploads/<?php echo $p["pic"] ?>" />
+           <br>
             <?php if ($liked==false){ ?>   <a href="./like.php?id=<?php echo $p["postid"] ?>" style="">Like</a><br><span class="like__amount">Liked By x people</span><br>         <?php } else { ?><a href="./dislike.php?id=<?php echo $p["postid"] ?>">dislike</a><br><span class="like__amount">Liked By x people</span><br>  <?php } ?>
            
             <div class="comment__container">  <input type="text" class="comment__input" placeholder="Comment"/>  <div><p><?php echo "comments" ?></p></div> </div>
