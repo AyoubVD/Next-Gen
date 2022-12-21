@@ -86,7 +86,8 @@ function displayPosts($posts) {
                     <p><b><a href="./profile.php?userid=<?php echo $c["id"] ?>"><?php echo $c["username"] ?></a></b> <br> <?php echo $c["comment"]?></p>
                 <?php
                 }
-                ?>       <img src="./assets/arrow-down.svg">
+                
+                ?>       
             <hr>
             </div>
             </div>
