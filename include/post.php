@@ -77,7 +77,7 @@ function displayPosts($posts) {
             <br>
             <span class="like__amount">Liked By <?php echo $p["like"] ?></span>
             <br>
-           
+            
             <div class="comment__container">  <input type="text" class="comment__input" placeholder="Comment"/>  <div><p><?php echo "comments" ?></p></div> </div>
                 <?php
                 foreach ($comments as &$c) {

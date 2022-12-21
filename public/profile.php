@@ -267,7 +267,7 @@ $posts=GetUserfeed($user["id"]);
 								</div>
 								<div class="cssui-stats cssui-usercard__stats-item">
 									<div class="cssui-stats__info cssui-usercard__stats-info">
-										<span class="cssui-stats__name cssui-usercard__stats-name">Last name</span>
+										<span class="cssui-stats__name cssui-usercard__stats-name">Designation</span>
                                         <a href="#0" class="cssui-stats__value"><?php echo $user["designation"] ?></a>
 									</div>
 									
