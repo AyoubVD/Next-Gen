@@ -351,7 +351,7 @@ $posts=GetUserfeed($user["id"]);
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer"> © IMS <a href="./index.php">I Am Social</a> </footer>
+            <footer class="footer"> © IMS <a href="https://www.youtube.com/watch?v=UmooaFW3r3o">I Am Social</a> </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
