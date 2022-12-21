@@ -242,34 +242,33 @@ $posts=GetUserfeed($user["id"]);
 						<!- first slide -->
 
 						<div class="cssui-slider__slide">
-							<h4 class="cssui-usercard__title">About me</h4>
+							<h4 class="cssui-usercard__title">About me: <?php echo $user["bio"] ?></h4>
 							<div class="cssui-usercard__stats">
 								<div class="cssui-stats cssui-usercard__stats-item">
 									<i class="cssui-icon icon-earth"></i>
 									<div class="cssui-stats__info cssui-usercard__stats-info">
-										<span class="cssui-stats__name cssui-usercard__stats-name">Language</span>
-										<span class="cssui-stats__value"><?php echo "English" ?></span>
+										<span class="cssui-stats__name cssui-usercard__stats-name">First name</span>
+										<a href="#0" class="cssui-stats__value"><?php echo $user["firstname"] ?></a>
 									</div>
 								</div>
 								<div class="cssui-stats cssui-usercard__stats-item">
 									<i class="cssui-icon icon-calendar"></i>
 									<div class="cssui-stats__info cssui-usercard__stats-info">
-										<span class="cssui-stats__name cssui-usercard__stats-name">Date of birth</span>
-										<span class="cssui-stats__value">03 December 1990</span>
+										<span class="cssui-stats__name cssui-usercard__stats-name">Last name</span>
+										<a href="#0" class="cssui-stats__value"><?php echo $user["lastname"] ?></a>
 									</div>
 								</div>
 								<div class="cssui-stats cssui-usercard__stats-item">
-									<i class="cssui-icon icon-email"></i>
 									<div class="cssui-stats__info cssui-usercard__stats-info">
-										<span class="cssui-stats__name cssui-usercard__stats-name">E-mail</span>
-										<a href="#0" class="cssui-stats__value"><?php echo $user["mail"] ?></a>
+										<span class="cssui-stats__name cssui-usercard__stats-name">Company</span>
+										<a href="#0" class="cssui-stats__value"><?php echo $user["company"] ?></a>
+                                        
 									</div>
 								</div>
 								<div class="cssui-stats cssui-usercard__stats-item">
-									<i class="cssui-icon icon-phone"></i>
 									<div class="cssui-stats__info cssui-usercard__stats-info">
-										<span class="cssui-stats__name cssui-usercard__stats-name">Phone</span>
-										<a href="tel:79000000000" class="cssui-stats__value">7-900-000-00-00</a>
+										<span class="cssui-stats__name cssui-usercard__stats-name">Last name</span>
+                                        <a href="#0" class="cssui-stats__value"><?php echo $user["designation"] ?></a>
 									</div>
 									
 								</div>
